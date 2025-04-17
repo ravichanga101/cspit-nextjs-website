@@ -251,11 +251,11 @@ const WelcomeSection = () => {
             </div>
           </div>
 
-          <div className="flex flex-wrap justify-center items-center gap-6">
+          <div className="flex flex-wrap justify-center items-center gap-8 mt-4">
             {strategicPartners.map((partner) => (
               <div
                 key={partner.name}
-                className="relative h-10 w-24 transition-all duration-300 hover:scale-105"
+                className="relative h-12 w-28"
                 title={partner.name}
               >
                 <Image

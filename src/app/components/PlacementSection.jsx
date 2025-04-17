@@ -37,24 +37,24 @@ export default function PlacementSection() {
           ></motion.div>
         </div>
 
-        {/* Placement Statistics */}
-        <div className="max-w-6xl mx-auto mb-24">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Placement Statistics - more compact design */}
+        <div className="max-w-5xl mx-auto mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="group relative overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-xl px-8 py-12 border border-gray-100"
+              className="group relative overflow-hidden bg-white rounded-xl shadow px-5 py-6 border border-gray-100"
             >
-              {/* Background decoration */}
-              <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-blue-50 rounded-full transform rotate-45 group-hover:bg-blue-100 transition-colors duration-300"></div>
+              {/* Background decoration - smaller */}
+              <div className="absolute top-0 right-0 -mt-8 -mr-8 w-24 h-24 bg-blue-50 rounded-full transform rotate-45 group-hover:bg-blue-100 transition-colors duration-300"></div>
 
               <div className="relative z-10">
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 mb-5 rounded-full bg-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
+                  <div className="w-12 h-12 mb-3 rounded-full bg-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
                     <svg
-                      className="w-8 h-8 text-blue-600 group-hover:text-white transition-colors duration-300"
+                      className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -67,10 +67,10 @@ export default function PlacementSection() {
                       />
                     </svg>
                   </div>
-                  <div className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 text-transparent bg-clip-text mb-2">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 text-transparent bg-clip-text mb-1">
                     8.5 LPA
                   </div>
-                  <p className="text-gray-600 text-lg font-medium">
+                  <p className="text-gray-600 text-sm font-medium">
                     Average Package
                   </p>
                 </div>
@@ -82,16 +82,16 @@ export default function PlacementSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="group relative overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-xl px-8 py-12 border border-gray-100"
+              className="group relative overflow-hidden bg-white rounded-xl shadow px-5 py-6 border border-gray-100"
             >
-              {/* Background decoration */}
-              <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-indigo-50 rounded-full transform rotate-45 group-hover:bg-indigo-100 transition-colors duration-300"></div>
+              {/* Background decoration - smaller */}
+              <div className="absolute top-0 right-0 -mt-8 -mr-8 w-24 h-24 bg-indigo-50 rounded-full transform rotate-45 group-hover:bg-indigo-100 transition-colors duration-300"></div>
 
               <div className="relative z-10">
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 mb-5 rounded-full bg-indigo-100 flex items-center justify-center group-hover:bg-indigo-600 transition-colors duration-300">
+                  <div className="w-12 h-12 mb-3 rounded-full bg-indigo-100 flex items-center justify-center group-hover:bg-indigo-600 transition-colors duration-300">
                     <svg
-                      className="w-8 h-8 text-indigo-600 group-hover:text-white transition-colors duration-300"
+                      className="w-6 h-6 text-indigo-600 group-hover:text-white transition-colors duration-300"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -104,10 +104,10 @@ export default function PlacementSection() {
                       />
                     </svg>
                   </div>
-                  <div className="text-5xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-800 text-transparent bg-clip-text mb-2">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-800 text-transparent bg-clip-text mb-1">
                     24 LPA
                   </div>
-                  <p className="text-gray-600 text-lg font-medium">
+                  <p className="text-gray-600 text-sm font-medium">
                     Highest Package
                   </p>
                 </div>
@@ -119,16 +119,16 @@ export default function PlacementSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="group relative overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-xl px-8 py-12 border border-gray-100"
+              className="group relative overflow-hidden bg-white rounded-xl shadow px-5 py-6 border border-gray-100"
             >
-              {/* Background decoration */}
-              <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-purple-50 rounded-full transform rotate-45 group-hover:bg-purple-100 transition-colors duration-300"></div>
+              {/* Background decoration - smaller */}
+              <div className="absolute top-0 right-0 -mt-8 -mr-8 w-24 h-24 bg-purple-50 rounded-full transform rotate-45 group-hover:bg-purple-100 transition-colors duration-300"></div>
 
               <div className="relative z-10">
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 mb-5 rounded-full bg-purple-100 flex items-center justify-center group-hover:bg-purple-600 transition-colors duration-300">
+                  <div className="w-12 h-12 mb-3 rounded-full bg-purple-100 flex items-center justify-center group-hover:bg-purple-600 transition-colors duration-300">
                     <svg
-                      className="w-8 h-8 text-purple-600 group-hover:text-white transition-colors duration-300"
+                      className="w-6 h-6 text-purple-600 group-hover:text-white transition-colors duration-300"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -141,10 +141,10 @@ export default function PlacementSection() {
                       />
                     </svg>
                   </div>
-                  <div className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 text-transparent bg-clip-text mb-2">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 text-transparent bg-clip-text mb-1">
                     120+
                   </div>
-                  <p className="text-gray-600 text-lg font-medium">
+                  <p className="text-gray-600 text-sm font-medium">
                     Companies Visited
                   </p>
                 </div>
@@ -172,62 +172,57 @@ export default function PlacementSection() {
           </motion.div>
 
           <div className="relative">
-            {/* Background effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-transparent to-blue-50 rounded-2xl"></div>
-
-            <div className="relative py-8 px-6">
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.8,
-                  staggerChildren: 0.1,
-                }}
-                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8"
-              >
-                {[
-                  "amazon",
-                  "motorola",
-                  "tcs",
-                  "softwarem",
-                  "torrent",
-                  "intuitive",
-                  "infosys",
-                  "infocusp",
-                  "capgemi",
-                  "crest",
-                  "jeavio",
-                  "canblicks",
-                  "thomson",
-                  "zignuts",
-                  "tatvasoft",
-                  "ibm",
-                  "navaera",
-                  "einfo",
-                ].map((company, index) => (
-                  <motion.div
-                    key={company}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center group hover:-translate-y-1"
-                  >
-                    <div className="relative h-16 w-full">
-                      <Image
-                        src={`/images1/recruiters/${company}${
-                          company.endsWith(".jpg") ? "" : ".png"
-                        }`}
-                        alt={`${company} logo`}
-                        fill
-                        className="object-contain filter group-hover:brightness-110 transition-all duration-300"
-                      />
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                staggerChildren: 0.1,
+              }}
+              className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 py-8 px-4"
+            >
+              {[
+                "amazon",
+                "motorola",
+                "tcs",
+                "softwarem",
+                "torrent",
+                "intuitive",
+                "infosys",
+                "infocusp",
+                "capgemi",
+                "crest",
+                "jeavio",
+                "canblicks",
+                "thomson",
+                "zignuts",
+                "tatvasoft",
+                "ibm",
+                "navaera",
+                "einfo",
+              ].map((company, index) => (
+                <motion.div
+                  key={company}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="flex items-center justify-center hover:opacity-80 transition-opacity duration-300"
+                >
+                  <div className="relative h-14 w-full">
+                    <Image
+                      src={`/images1/recruiters/${company}${
+                        company.endsWith(".jpg") ? "" : ".png"
+                      }`}
+                      alt={`${company} logo`}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
 
