@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const clubsData = [
   {
@@ -91,28 +92,35 @@ const clubsData = [
 
 export default function StudentClubs() {
   return (
-    <section className="bg-blue-600 py-16 md:py-24">
+    <section className="bg-gradient-to-b from-gray-50 to-white py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4">Student Clubs</h2>
-          <p className="text-blue-100">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            Student Clubs
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
             Fostering innovation and collaboration through student-led
             communities
           </p>
-          <div className="h-1 w-32 mx-auto mt-4 bg-white/20 rounded-full"></div>
+          <div className="h-1 w-32 mx-auto mt-4 bg-blue-600 rounded-full"></div>
         </div>
 
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-            {clubsData.map((club) => (
-              <a
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {clubsData.map((club, index) => (
+              <motion.a
                 key={club.name}
                 href={club.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white rounded-xl p-4 shadow-lg transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+                className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-lg hover:border-gray-200 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                whileHover={{ y: -5 }}
               >
-                <div className="relative h-20">
+                <div className="relative h-24 mb-3">
                   <Image
                     src={club.image}
                     alt={club.name}
@@ -120,15 +128,15 @@ export default function StudentClubs() {
                     className="object-contain"
                   />
                 </div>
-                <div className="mt-3 text-center">
-                  <p className="text-sm font-medium text-gray-600">
+                <div className="text-center">
+                  <p className="font-medium text-gray-800 line-clamp-2 mb-2 h-12">
                     {club.name}
                   </p>
-                  <span className="inline-block px-2 py-1 mt-1 bg-blue-50 rounded-full text-xs text-blue-600">
+                  <span className="inline-block px-3 py-1 bg-blue-50 rounded-full text-xs text-blue-600 font-medium">
                     {club.category}
                   </span>
                 </div>
-              </a>
+              </motion.a>
             ))}
           </div>
         </div>
