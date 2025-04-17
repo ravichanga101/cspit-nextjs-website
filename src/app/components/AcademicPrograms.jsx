@@ -22,12 +22,20 @@ export default function AcademicPrograms() {
         </div>
 
         <div id="under-graduate-programs" className="mb-16">
-          <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="text-3xl font-bold text-gray-900 bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-8 flex items-center">
-              <div className="fas fa-graduation-cap text-blue-600 mr-4"></div>
-              Undergraduate Programs
-            </h3>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="bg-white rounded-xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300">
+            <div className="text-center mb-10">
+              <h3 className="text-3xl font-bold mb-6 relative inline-block">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                  Undergraduate Programs
+                </span>
+                <div className="absolute left-1/2 -translate-x-1/2 -bottom-4 w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"></div>
+              </h3>
+              <p className="text-gray-600 max-w-2xl mx-auto mt-6 text-lg">
+                CSPIT offers a range of undergraduate engineering programs
+                designed to create industry-ready professionals
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
               {[
                 {
                   name: "Computer Science Engineering",
@@ -44,18 +52,18 @@ export default function AcademicPrograms() {
                   link: "/departments/information-technology",
                 },
                 {
-                  name: "Computer Engineering",
-                  icon: "microchip",
-                  intake: 60,
-                  fees: "1,31,000",
-                  link: "/departments/computer-engineering",
-                },
-                {
                   name: "AI & ML Engineering",
                   icon: "brain",
                   intake: 60,
                   fees: "1,31,000",
                   link: "/departments/aiml",
+                },
+                {
+                  name: "Computer Engineering",
+                  icon: "microchip",
+                  intake: 60,
+                  fees: "1,31,000",
+                  link: "/departments/computer-engineering",
                 },
                 {
                   name: "Electronics & Communication",
@@ -89,23 +97,41 @@ export default function AcademicPrograms() {
                 <a
                   key={program.name}
                   href={program.link}
-                  className="group block p-6 bg-gradient-to-br from-white to-blue-50 rounded-lg hover:shadow-xl transition-all duration-300 border border-blue-100"
+                  className="group flex items-center p-5 hover:bg-blue-50/50 rounded-md transition-colors duration-200 border border-transparent hover:border-blue-200 relative"
                 >
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 flex-shrink-0 bg-blue-600 text-white rounded-lg flex items-center justify-center">
-                      <i className={`fas fa-${program.icon} text-xl`}></i>
+                  <div className="w-10 h-10 flex-shrink-0 text-blue-600 rounded flex items-center justify-center">
+                    <i className={`fas fa-${program.icon} text-lg`}></i>
+                  </div>
+                  <div className="ml-3 flex-grow">
+                    <h4 className="text-base font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                      {program.name}
+                    </h4>
+                    <div className="flex items-center text-sm text-gray-500 mt-1">
+                      <span>
+                        <i className="fas fa-user-graduate text-xs mr-1"></i>{" "}
+                        {program.intake}
+                      </span>
+                      <span className="mx-2">•</span>
+                      <span>
+                        <i className="fas fa-rupee-sign text-xs mr-1"></i>{" "}
+                        {program.fees}/yr
+                      </span>
                     </div>
-                    <div className="flex-1">
-                      <h4 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600">
-                        {program.name}
-                      </h4>
-                      <p className="text-gray-600 mb-2">
-                        Intake: {program.intake} | AICTE Approved
-                      </p>
-                      <p className="text-sm text-blue-600 font-medium">
-                        Fees: ₹{program.fees}/year
-                      </p>
-                    </div>
+                  </div>
+                  <div className="absolute right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-blue-600">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
                   </div>
                 </a>
               ))}
@@ -113,13 +139,21 @@ export default function AcademicPrograms() {
           </div>
         </div>
 
-        <div id="post-graduate-programs">
-          <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="text-3xl font-bold text-gray-900 bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-8 flex items-center">
-              <div className="fas fa-user-graduate text-blue-600 mr-4"></div>
-              Postgraduate Programs
-            </h3>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div id="post-graduate-programs" className="mb-16">
+          <div className="bg-white rounded-xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300">
+            <div className="text-center mb-10">
+              <h3 className="text-3xl font-bold mb-6 relative inline-block">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                  Postgraduate Programs
+                </span>
+                <div className="absolute left-1/2 -translate-x-1/2 -bottom-4 w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"></div>
+              </h3>
+              <p className="text-gray-600 max-w-2xl mx-auto mt-6 text-lg">
+                Advanced studies in specialized engineering fields for career
+                advancement and research excellence
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
               {[
                 {
                   name: "M.Tech in Computer Engineering",
@@ -146,23 +180,39 @@ export default function AcademicPrograms() {
                 <a
                   key={program.name}
                   href={program.link}
-                  className="group block p-6 bg-gradient-to-br from-white to-indigo-50 rounded-lg hover:shadow-xl transition-all duration-300 border border-indigo-100"
+                  className="group flex items-center p-5 hover:bg-blue-50/50 rounded-md transition-colors duration-200 border border-transparent hover:border-blue-200 relative"
                 >
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 flex-shrink-0 bg-indigo-600 text-white rounded-lg flex items-center justify-center">
-                      <i className={`fas fa-${program.icon} text-xl`}></i>
+                  <div className="w-10 h-10 flex-shrink-0 text-blue-600 rounded flex items-center justify-center">
+                    <i className={`fas fa-${program.icon} text-lg`}></i>
+                  </div>
+                  <div className="ml-3 flex-grow">
+                    <h4 className="text-base font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                      {program.name}
+                    </h4>
+                    <div className="text-sm text-gray-500 mt-1">
+                      {program.specialization}
                     </div>
-                    <div className="flex-1">
-                      <h4 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-indigo-600">
-                        {program.name}
-                      </h4>
-                      <p className="text-gray-600 mb-2">
-                        {program.specialization}
-                      </p>
-                      <p className="text-sm text-indigo-600 font-medium">
-                        Fees: ₹{program.fees}/year
-                      </p>
+                    <div className="flex items-center text-sm text-gray-500 mt-1">
+                      <span>
+                        <i className="fas fa-rupee-sign text-xs mr-1"></i>{" "}
+                        {program.fees}/yr
+                      </span>
                     </div>
+                  </div>
+                  <div className="absolute right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-blue-600">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
                   </div>
                 </a>
               ))}
