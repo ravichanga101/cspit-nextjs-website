@@ -5,29 +5,15 @@ import Image from "next/image";
 const messages = [
   {
     role: "Dean",
-    name: "Dr. Trushit Upadhyaya",
-    image: "/CSPIT_Faculty/Electronics/TRUSHIT.webp",
-    message: `At CSPIT, we are committed to fostering innovation and academic excellence. Our vision is to create future-ready engineers who can tackle global challenges with creativity and confidence. Through our state-of-the-art facilities, industry collaborations, and dedicated faculty, we ensure that our students receive world-class education and practical exposure.
-
-We believe in nurturing not just technical skills, but also leadership qualities, ethical values, and entrepreneurial spirit. Our curriculum is designed to meet industry demands while encouraging research and innovation. Join us in this journey of transforming education and shaping tomorrow's leaders.`,
-    highlights: [
-      { label: "Research Publications", value: "250+" },
-      { label: "Industry Partners", value: "50+" },
-      { label: "Years of Excellence", value: "20+" },
-    ],
+    name: "Dr. Vijaykumar Chaudhary",
+    image: "/images/VijayChaudhary.webp",
+    message: `Welcome to CSPIT, CHARUSAT! As Dean, I'm thrilled to lead our community of scholars, learners, and innovators. Together, let's embrace excellence, diversity, and collaboration. Students, seize every opportunity to grow and make a difference. Faculty, your dedication shapes futures. Staff, your efforts keep our institute thriving. Let's foster an inclusive environment where every voice matters. As we embark on this journey, let's uphold the values of integrity and empathy. I'm excited to witness our collective achievements.`,
   },
   {
     role: "Principal",
-    name: "Dr. Rajesh Patel",
-    image: "/CSPIT_Faculty/Electronics/RAJESH.webp",
-    message: `Welcome to CSPIT, where we blend tradition with technology to create an innovative learning environment. Our institution stands at the forefront of technical education, committed to producing industry-ready professionals who can lead technological advancement.
-
-Our focus on practical learning, research opportunities, and industry collaboration creates an ecosystem that nurtures creativity and technical excellence. We take pride in our state-of-the-art infrastructure, experienced faculty, and strong industry connections that help our students excel in their chosen fields.`,
-    highlights: [
-      { label: "Placement Rate", value: "95%" },
-      { label: "Faculty Members", value: "100+" },
-      { label: "Research Projects", value: "75+" },
-    ],
+    name: "Dr. Trushit Upadhyaya",
+    image: "/images/TKU.png",
+    message: `Welcome to CSPIT, where we foster excellence and innovation in engineering education. To our students: Embrace opportunities, challenge yourself, and cultivate a passion for lifelong learning. Faculty: Your dedication molds future leaders; continue to inspire and innovate. Staff: Your commitment ensures our success; thank you for your invaluable contributions. Together, let's uphold integrity, excellence, and inclusivity. As Principal, I'm excited about the journey ahead. Let's collaborate, learn, and grow as we shape the future of engineering together.`,
   },
 ];
 
@@ -96,28 +82,17 @@ export default function MessageSection() {
                   </div>
                 </div>
 
-                {/* Message Content */}
-                <div className="space-y-6">
-                  <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+                {/* Message Content with Quote Design */}
+                <div className="relative">
+                  <div className="absolute -left-2 -top-2 text-6xl text-blue-200 font-serif">
+                    "
+                  </div>
+                  <div className="absolute -right-2 -bottom-2 text-6xl text-blue-200 font-serif">
+                    "
+                  </div>
+                  <p className="text-base md:text-lg text-gray-600 leading-relaxed px-6 py-4 italic">
                     {item.message}
                   </p>
-
-                  {/* Highlights */}
-                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-gray-100">
-                    {item.highlights.map((highlight) => (
-                      <div
-                        key={highlight.label}
-                        className="text-center group cursor-pointer"
-                      >
-                        <p className="text-xl md:text-2xl font-bold text-blue-600 mb-1 group-hover:scale-110 transition-transform">
-                          {highlight.value}
-                        </p>
-                        <p className="text-sm text-gray-500">
-                          {highlight.label}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
             </motion.div>
