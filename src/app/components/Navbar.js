@@ -9,12 +9,18 @@ export default function Navbar() {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
 
   const toggleSubmenu = (menu) => {
-    setActiveSubmenu(activeSubmenu === menu ? null : menu);
+    setActiveSubmenu((prev) => (prev === menu ? null : menu));
+  };
+
+  // Toggle mobile menu and reset any open submenu
+  const handleMobileToggle = () => {
+    setActiveSubmenu(null);
+    setIsMobileMenuOpen((prev) => !prev);
   };
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50 border-b border-gray-200">
-      <nav className="container mx-auto flex items-center justify-between p-2">
+      <nav className="relative container mx-auto flex items-center justify-between p-2">
         {/* Logo */}
         <div className="flex items-center">
           <Link
@@ -290,7 +296,7 @@ export default function Navbar() {
         <div className="md:hidden">
           <button
             className="text-gray-700 focus:outline-none p-2 hover:bg-gray-100 rounded-lg transition-colors"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={handleMobileToggle}
           >
             <svg
               className="w-6 h-6 transition-transform duration-300"
@@ -314,161 +320,157 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        <div
-          className={`absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-2xl z-50 md:hidden transform transition-all duration-300 ease-in-out ${
-            isMobileMenuOpen
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-full opacity-0"
-          }`}
-        >
-          <div className="p-4 space-y-4 max-h-[80vh] overflow-y-auto">
-            <Link
-              href="#placement"
-              className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Placement
-            </Link>
-            <Link
-              href="#gallery"
-              className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Gallery
-            </Link>
-
-            {/* Mobile Academics Menu */}
-            <div className="space-y-2">
-              <button
-                className="flex items-center justify-between w-full text-gray-700 hover:text-[#0056b3] transition-all duration-200 text-base font-medium"
-                onClick={() => toggleSubmenu("academics")}
+        {isMobileMenuOpen && (
+          <div className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-2xl z-50 md:hidden">
+            <div className="p-4 space-y-4 max-h-[80vh] overflow-y-auto">
+              <Link
+                href="#placement"
+                className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span>Academics</span>
-                <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    activeSubmenu === "academics" ? "rotate-180" : ""
+                Placement
+              </Link>
+              <Link
+                href="#gallery"
+                className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Gallery
+              </Link>
+
+              {/* Mobile Academics Menu */}
+              <div className="space-y-2">
+                <button
+                  className="flex items-center justify-between w-full text-gray-700 hover:text-[#0056b3] transition-all duration-200 text-base font-medium"
+                  onClick={() => toggleSubmenu("academics")}
+                >
+                  <span>Academics</span>
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      activeSubmenu === "academics" ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <div
+                  className={`pl-4 space-y-2 text-base ${
+                    activeSubmenu === "academics" ? "block" : "hidden"
                   }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <div
-                className={`pl-4 space-y-2 ${
-                  activeSubmenu === "academics" ? "block" : "hidden"
-                }`}
-              >
-                <Link
-                  href="#under-graduate-programs"
-                  className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Undergraduate Programs
-                </Link>
-                <Link
-                  href="#post-graduate-programs"
-                  className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Postgraduate Programs
-                </Link>
-                <Link
-                  href="https://www.charusat.ac.in/assets/files/PHD/PhD_Regulations.pdf"
-                  target="_blank"
-                  className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Ph.D.
-                </Link>
+                  <Link
+                    href="#under-graduate-programs"
+                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Undergraduate Programs
+                  </Link>
+                  <Link
+                    href="#post-graduate-programs"
+                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Postgraduate Programs
+                  </Link>
+                  <Link
+                    href="https://www.charusat.ac.in/assets/files/PHD/PhD_Regulations.pdf"
+                    target="_blank"
+                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Ph.D.
+                  </Link>
+                </div>
               </div>
-            </div>
 
-            {/* Mobile Student Corner Menu */}
-            <div className="space-y-2">
-              <button
-                className="flex items-center justify-between w-full text-gray-700 hover:text-[#0056b3] transition-all duration-200 text-base font-medium"
-                onClick={() => toggleSubmenu("student")}
-              >
-                <span>Student Corner</span>
-                <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    activeSubmenu === "student" ? "rotate-180" : ""
+              {/* Mobile Student Corner Menu */}
+              <div className="space-y-2">
+                <button
+                  className="flex items-center justify-between w-full text-gray-700 hover:text-[#0056b3] transition-all duration-200 text-base font-medium"
+                  onClick={() => toggleSubmenu("student")}
+                >
+                  <span>Student Corner</span>
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      activeSubmenu === "student" ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <div
+                  className={`pl-4 space-y-2 text-base ${
+                    activeSubmenu === "student" ? "block" : "hidden"
                   }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <div
-                className={`pl-4 space-y-2 ${
-                  activeSubmenu === "student" ? "block" : "hidden"
-                }`}
-              >
-                <Link
-                  href="https://www.charusat.ac.in/documents/pdfs/data_1/Code_Of_Conduct/Student%20code%20of%20Conduct.pdf"
-                  target="_blank"
-                  className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Code Of Conduct
-                </Link>
-                <Link
-                  href="https://charusat.edu.in:912/Uniexamresult/"
-                  target="_blank"
-                  className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  View Result
-                </Link>
-                <Link
-                  href="https://charusat.edu.in:912/FeesPaymentApp/"
-                  target="_blank"
-                  className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Pay Fees
-                </Link>
+                  <Link
+                    href="https://www.charusat.ac.in/documents/pdfs/data_1/Code_Of_Conduct/Student%20code%20of%20Conduct.pdf"
+                    target="_blank"
+                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Code Of Conduct
+                  </Link>
+                  <Link
+                    href="https://charusat.edu.in:912/Uniexamresult/"
+                    target="_blank"
+                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    View Result
+                  </Link>
+                  <Link
+                    href="https://charusat.edu.in:912/FeesPaymentApp/"
+                    target="_blank"
+                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Pay Fees
+                  </Link>
+                </div>
               </div>
-            </div>
 
-            <Link
-              href="/faculty"
-              className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Faculty & Staff
-            </Link>
-            <Link
-              href="https://alumni.charusat.ac.in/"
-              target="_blank"
-              className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Alumni
-            </Link>
-            <Link
-              href="#contact-us"
-              className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Contact Us
-            </Link>
+              <Link
+                href="/faculty"
+                className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Faculty & Staff
+              </Link>
+              <Link
+                href="https://alumni.charusat.ac.in/"
+                target="_blank"
+                className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Alumni
+              </Link>
+              <Link
+                href="#contact-us"
+                className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact Us
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
       </nav>
     </header>
   );
