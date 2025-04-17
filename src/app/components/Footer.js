@@ -1,5 +1,6 @@
 "use client";
-
+import Image from "next/image";
+import Link from "next/link";
 const Footer = () => {
   const openCustomPopup = (popupId) => {
     // Implement popup functionality here
@@ -12,25 +13,24 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1 - Logo and Institute Info */}
           <div className="flex flex-col items-center">
-            <div className="bg-white/95 p-4 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 mb-6">
-              <img
-                className="w-[150px] h-auto"
-                src="/images1/CSPIT_Logo.png"
-                loading="lazy"
-                alt="Institute Logo"
-              />
+            <div className="relative group mb-6">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 rounded-xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative bg-white/95 p-5 rounded-xl shadow-lg transform  transition-transform duration-300 border-2 border-white overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-indigo-100 opacity-20"></div>
+                <Image
+                  src="/images1/CSPIT_Logo.png"
+                  width={80}
+                  height={80}
+                  className="w-[80px] h-auto relative z-10"
+                  loading="lazy"
+                  alt="CSPIT Institute Logo"
+                />
+              </div>
             </div>
-            <h5 className="text-lg font-semibold text-center mb-6">
+            <h5 className="text-lg font-semibold text-center mb-6 tracking-wide">
               CHANDUBHAI S. PATEL <br />
-              INSTITUTE OF TECHNOLOGY
+              <span className="text-blue-100">INSTITUTE OF TECHNOLOGY</span>
             </h5>
-            <div className="bg-white/20 p-4 rounded-xl backdrop-blur-sm hover:bg-white/30 transition-all duration-300">
-              <img
-                src="/images1/charusatlogo.png"
-                alt="Charusat Logo"
-                className="w-[300px] h-auto"
-              />
-            </div>
           </div>
 
           {/* Column 2 - Quick Links */}
@@ -136,7 +136,7 @@ const Footer = () => {
           {/* Column 4 - Location Map */}
           <div className="flex flex-col">
             <h5 className="text-lg font-semibold mb-6">Location</h5>
-            <div className="relative w-full h-[190px] rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-300">
+            <div className="relative w-full h-[190px] rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-300 border border-white/20">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.41961737984!2d72.81767727475798!3d22.60080043193719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e50c699400001%3A0xb50162f2acb04c04!2sCSPIT%20(CE%2FIT)!5e0!3m2!1sen!2sin!4v1729709960389!5m2!1sen!2sin"
                 className="w-full h-full border-0"
@@ -156,12 +156,28 @@ const Footer = () => {
             <span className="text-sm text-white/90">
               ©Copyright CSPIT- CHARUSAT | All rights reserved
             </span>
+            <div className="  hover:bg-white/30 transition-all duration-300 rounded-lg p-2">
+              <Link
+                href="https://www.charusat.ac.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/images1/charusatlogo.png"
+                  width={300}
+                  height={100}
+                  alt="Charusat Logo"
+                  className="w-[180px] h-auto  rounded"
+                />
+              </Link>
+            </div>
             <div className="flex space-x-6">
               <a
                 href="https://www.facebook.com/people/Cspit-Charusat/pfbid0XnpDeADufmh2SmRWAq2tWZmSvyJSsgVqRH5YTicU8Y6vo9qGvyCMNTGdkt7qxsLvl/"
                 target="_blank"
                 className="text-white/80 hover:text-white transition-all duration-300 transform hover:scale-110"
                 rel="noopener noreferrer"
+                aria-label="Facebook"
               >
                 <svg
                   className="w-6 h-6"
@@ -176,6 +192,7 @@ const Footer = () => {
                 target="_blank"
                 className="text-white/80 hover:text-white transition-all duration-300 transform hover:scale-110"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
               >
                 <svg
                   className="w-6 h-6"
@@ -190,6 +207,7 @@ const Footer = () => {
                 target="_blank"
                 className="text-white/80 hover:text-white transition-all duration-300 transform hover:scale-110"
                 rel="noopener noreferrer"
+                aria-label="Instagram"
               >
                 <svg
                   className="w-6 h-6"
@@ -204,6 +222,7 @@ const Footer = () => {
                 target="_blank"
                 className="text-white/80 hover:text-white transition-all duration-300 transform hover:scale-110"
                 rel="noopener noreferrer"
+                aria-label="Twitter"
               >
                 <svg
                   className="w-6 h-6"
