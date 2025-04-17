@@ -173,27 +173,27 @@ const WelcomeSection = () => {
           </div>
 
           {/* Research Thrust Areas */}
-          <div className="mt-16">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">
+          <div className="mt-12">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold text-gray-800 mb-3">
                 Research Thrust Areas
               </h2>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm">
                 Pioneering Innovation Through Research Excellence
               </p>
-              <div className="h-1 w-32 mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mt-4"></div>
+              <div className="h-1 w-32 mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mt-3"></div>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-xl p-5 shadow-lg">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {researchAreas.map((area) => (
                   <div
                     key={area.title}
-                    className="flex items-start space-x-3 p-4 rounded-lg hover:bg-blue-50 transition-colors duration-300"
+                    className="flex items-start space-x-2 p-2 rounded-lg hover:bg-blue-50 transition-colors duration-300"
                   >
-                    <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full flex items-center justify-center text-white">
+                    <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full flex items-center justify-center text-white">
                       <svg
-                        className="w-4 h-4"
+                        className="w-3 h-3"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -202,17 +202,14 @@ const WelcomeSection = () => {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth={2}
-                          d="M9 5l7 7-7 7"
+                          d="M5 13l4 4L19 7"
                         />
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">
+                      <h3 className="font-medium text-gray-900 text-sm">
                         {area.title}
                       </h3>
-                      <p className="text-sm text-gray-600 mt-1">
-                        {area.description}
-                      </p>
                     </div>
                   </div>
                 ))}
