@@ -16,7 +16,7 @@ export default function FacultyAndStaff({ faculties }) {
           {faculties.map((faculty) => (
             <div
               key={faculty.slug}
-              className="faculty-card bg-white rounded-lg shadow hover:shadow-lg transition"
+              className="faculty-card bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 rounded-lg shadow transition transform hover:shadow-xl hover:scale-105"
             >
               <Link
                 href={`/faculty/${faculty.slug}`}
@@ -25,7 +25,9 @@ export default function FacultyAndStaff({ faculties }) {
                 <div className="relative w-full h-48 mb-4">
                   <Image
                     src={faculty.image || "/CSPIT_Faculty/profile.png"}
-                    onError={(e) => { e.currentTarget.src = "/CSPIT_Faculty/profile.png"; }}
+                    onError={(e) => {
+                      e.currentTarget.src = "/CSPIT_Faculty/profile.png";
+                    }}
                     alt={faculty.name}
                     fill
                     className="object-cover rounded-t-lg"
@@ -34,15 +36,12 @@ export default function FacultyAndStaff({ faculties }) {
                 <h4 className="text-xl font-semibold text-gray-800">
                   {faculty.name}
                 </h4>
-                <h5 className="text-md text-gray-600 mt-1">
-                  {faculty.title}
-                </h5>
-                <p className="text-sm text-gray-500 mt-1">
-                  {faculty.degree}
-                </p>
+                <h5 className="text-md text-gray-600 mt-1">{faculty.title}</h5>
+                <p className="text-sm text-gray-500 mt-1">{faculty.degree}</p>
                 {faculty.researchInterests && (
                   <p className="text-sm text-gray-700 mt-2">
-                    <strong>Research Interests:</strong> {faculty.researchInterests}
+                    <strong>Research Interests:</strong>{" "}
+                    {faculty.researchInterests}
                   </p>
                 )}
               </Link>
