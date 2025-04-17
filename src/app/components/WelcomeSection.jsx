@@ -30,6 +30,46 @@ const WelcomeSection = () => {
     },
   ];
 
+  // New intake scalars
+  const intakeScalars = [
+    {
+      value: "2000",
+      label: "Established in Year",
+    },
+    {
+      value: "600",
+      label: "B.Tech Seats",
+    },
+    {
+      value: "8",
+      label: "Bachelor's Programs",
+    },
+    {
+      value: "63",
+      label: "Post Graduate Seats",
+    },
+    {
+      value: "36",
+      label: "PhD Seats",
+    },
+    {
+      value: "118",
+      label: "Faculty Members",
+    },
+    {
+      value: "2313",
+      label: "Publications",
+    },
+    {
+      value: "61",
+      label: "Research Grants",
+    },
+    {
+      value: "₹55.8M",
+      label: "Grant Amount",
+    },
+  ];
+
   const strategicPartners = [
     { name: "Microsoft Corporation", logo: "/images1/MOU/microsoft.png" },
     { name: "eInfochips", logo: "/images1/MOU/1einfochips.png" },
@@ -48,216 +88,183 @@ const WelcomeSection = () => {
   const researchAreas = [
     {
       title: "AI, ML and Data Science",
-      description:
-        "Advanced research in artificial intelligence, machine learning algorithms, and data analytics",
     },
     {
       title: "VLSI & Embedded Systems",
-      description:
-        "Cutting-edge research in integrated circuit design and embedded systems",
     },
     {
       title: "Cyber Security / Blockchain",
-      description:
-        "Research in network security, cryptography, and blockchain technology",
     },
     {
       title: "Composite Materials",
-      description:
-        "Development of advanced composite materials for engineering applications",
     },
     {
       title: "Thermal Engineering",
-      description: "Research in heat transfer and energy systems optimization",
     },
     {
       title: "Electric Vehicle Technology",
-      description:
-        "Research in electric propulsion and sustainable transportation",
     },
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white py-20">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-50 rounded-full mix-blend-multiply opacity-20 animate-blob"></div>
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-50 rounded-full mix-blend-multiply opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-blue-100 rounded-full mix-blend-multiply opacity-20 animate-blob animation-delay-4000"></div>
-      </div>
+    <section className="py-12 bg-gradient-to-b from-white to-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col lg:flex-row items-center gap-8 mb-12">
+          {/* Welcome Image */}
+          <div className="w-full lg:w-1/2 relative h-[400px] rounded-lg overflow-hidden">
+            <Image
+              src="/images/ahmedabad-research-bg.jpg"
+              alt="CSPIT Campus"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-blue-900/30"></div>
+          </div>
 
-      <div className="container mx-auto px-4 relative">
-        <div className="max-w-5xl mx-auto">
-          {/* Main heading with gradient */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          {/* Welcome Text */}
+          <div className="w-full lg:w-1/2">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               Welcome to CSPIT
             </h1>
-            <p className="text-xl md:text-2xl font-medium text-gray-600 mb-6">
+            <h2 className="text-xl md:text-2xl font-medium text-gray-600 mb-6">
               Chandubhai S. Patel Institute of Technology
-            </p>
-            <div className="h-1 w-32 mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"></div>
-          </div>
-          {/* Description card */}
-          <div className="bg-white rounded-2xl my-3 p-8 md:p-12 shadow-xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-gradient-to-br from-blue-600 to-indigo-600 opacity-10 rounded-full transform rotate-45"></div>
-            <div className="relative space-y-6">
-              <p className="text-gray-600 leading-relaxed text-lg">
+            </h2>
+            <div className="h-1 w-32 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mb-6"></div>
+
+            <div className="space-y-4 text-gray-700">
+              <p>
                 CSPIT is the first institute established in year 2000 at
                 Education Campus, Changa (now CHARUSAT). The institute is
                 managed through a think tank of academicians, scientists,
                 engineers and professionals from all parts of the world.
               </p>
-              <p className="text-gray-600 leading-relaxed text-lg">
-                Started with 240 seats with four Bachelor Degree Engineering
-                Programs in the year 2000, the institute now has total intake of
-                600 seats in 8 programs of Bachelor Degree, 63 seats of Post
-                Graduate Degree and a Doctor of Philosophy (Ph. D.) programme.
-              </p>
+
+              {/* Intake Scalars Grid - replacing the second paragraph */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6">
+                {intakeScalars.map((scalar) => (
+                  <div
+                    key={scalar.label}
+                    className="text-center bg-gradient-to-br from-blue-50 to-indigo-50 p-2 rounded-lg"
+                  >
+                    <div className="font-bold text-lg md:text-xl text-gray-800">
+                      {scalar.value}
+                    </div>
+                    <p className="font-medium text-xs text-gray-700 mt-1">
+                      {scalar.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
-            {/* Scalars grid */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 m-12">
-              {scalars.map((scalar) => (
-                <div
-                  key={scalar.label}
-                  className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-                >
-                  <div className="text-blue-600 text-2xl mb-2 flex justify-center">
-                    <svg
-                      className="w-8 h-8"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 640 512"
-                    >
-                      <path fill="currentColor" d={scalar.icon} />
-                    </svg>
-                  </div>
-                  <div className="text-2xl font-bold text-center text-gray-800 mb-1">
-                    {scalar.value}
-                  </div>
-                  <div className="text-center text-gray-600 text-sm">
-                    {scalar.label}
-                  </div>
+          </div>
+        </div>
+
+        {/* Research Thrust Areas - more compact with border */}
+        <div className="mb-12 p-4 border border-blue-200 rounded-lg relative pb-8">
+          {/* Centered Title with Background */}
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full shadow-md">
+              <h2 className="text-lg font-bold">Research Thrust Areas</h2>
+            </div>
+          </div>
+
+          {/* Grid content - starting further down to accommodate the title */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-6">
+            {researchAreas.map((area) => (
+              <div
+                key={area.title}
+                className="flex items-center space-x-2 p-2 hover:bg-blue-50 rounded-lg transition-colors duration-300"
+              >
+                <div className="flex-shrink-0 w-5 h-5 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full flex items-center justify-center text-white">
+                  <svg
+                    className="w-2.5 h-2.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
                 </div>
-              ))}
-            </div>
-            {/* Strategic Partners Section */}
-            <div className="mt-16">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-gray-800 mb-4">
-                  Our Strategic Partners
-                </h2>
-                <p className="text-gray-600">
-                  Collaborating with industry leaders for excellence
-                </p>
-                <div className="h-1 w-32 mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mt-4"></div>
+                <h3 className="font-medium text-sm text-gray-900">
+                  {area.title}
+                </h3>
               </div>
+            ))}
+          </div>
+        </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                {strategicPartners.map((partner) => (
-                  <div
-                    key={partner.name}
-                    className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-                  >
-                    <div className="relative h-16 w-full">
-                      <Image
-                        src={partner.logo}
-                        alt={partner.name}
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+        {/* Strategic Partners Section - with light blue gradient background */}
+        <div className="mb-12 py-8 px-4 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg shadow-sm relative pt-10">
+          {/* Centered Title with Background - matching Research Thrust Areas style */}
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full shadow-md">
+              <h2 className="text-lg font-bold">Strategic Partners</h2>
             </div>
           </div>
 
-          {/* Research Thrust Areas */}
-          <div className="mt-12">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-3">
-                Research Thrust Areas
-              </h2>
-              <p className="text-gray-600 text-sm">
-                Pioneering Innovation Through Research Excellence
-              </p>
-              <div className="h-1 w-32 mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mt-3"></div>
-            </div>
-
-            <div className="bg-white rounded-xl p-5 shadow-lg">
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {researchAreas.map((area) => (
-                  <div
-                    key={area.title}
-                    className="flex items-start space-x-2 p-2 rounded-lg hover:bg-blue-50 transition-colors duration-300"
-                  >
-                    <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full flex items-center justify-center text-white">
-                      <svg
-                        className="w-3 h-3"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-gray-900 text-sm">
-                        {area.title}
-                      </h3>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* CTA buttons */}
-          <div className="mt-12 flex flex-wrap justify-center gap-6">
-            <a
-              href="#under-graduate-programs"
-              className="inline-flex items-center px-8 py-4 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
-            >
-              Download Brochure
-              <svg
-                className="w-5 h-5 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+          <div className="flex flex-wrap justify-center items-center gap-6">
+            {strategicPartners.map((partner) => (
+              <div
+                key={partner.name}
+                className="relative h-10 w-24 transition-all duration-300 hover:scale-105"
+                title={partner.name}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                <Image
+                  src={partner.logo}
+                  alt={partner.name}
+                  fill
+                  className="object-contain"
                 />
-              </svg>
-            </a>
-            <a
-              href="#contact-us"
-              className="inline-flex items-center px-8 py-4 rounded-lg border-2 border-blue-600 text-blue-600 font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1"
-            >
-              Contact Us
-              <svg
-                className="w-5 h-5 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                />
-              </svg>
-            </a>
+              </div>
+            ))}
           </div>
+        </div>
+        {/* CTA buttons */}
+        <div className="flex flex-wrap justify-center gap-5 mt-6">
+          <a
+            href="#under-graduate-programs"
+            className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+          >
+            Download Brochure
+            <svg
+              className="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+          <a
+            href="#contact-us"
+            className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-blue-600 text-blue-600 font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1"
+          >
+            Contact Us
+            <svg
+              className="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+              />
+            </svg>
+          </a>
         </div>
       </div>
     </section>

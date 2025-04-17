@@ -1,13 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 // Unified menu with nested children for dropdowns
 const MENU_LINKS = [
-  { label: "Placement", href: "#placement" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "Home", href: "/" },
   {
     label: "Academics",
     key: "academics",
@@ -137,18 +136,39 @@ const MENU_LINKS = [
       },
     ],
   },
+  { label: "Research", href: "/research" },
   { label: "Faculty & Staff", href: "/faculty" },
+  { label: "Placement", href: "#placement" },
+
   {
     label: "Alumni",
     href: "https://alumni.charusat.ac.in/",
     target: "_blank",
   },
+
   { label: "Contact Us", href: "#contact-us" },
 ];
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Add scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    // Initialize on mount
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const toggleSubmenu = (menu) => {
     setActiveSubmenu((prev) => (prev === menu ? null : menu));
@@ -164,112 +184,120 @@ export default function Navbar() {
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50 border-b border-gray-200">
-      <nav className="relative container mx-auto flex items-center justify-between p-2">
-        {/* Logo */}
-        <div className="flex items-center">
-          <Link
-            href="/"
-            className="transition-all duration-300 hover:opacity-90"
-          >
-            <Image
-              src="/images1/CSPIT_Logo.png"
-              alt="CSPIT Logo"
-              width={80}
-              height={80}
-              className="transition-all duration-300"
-            />
-          </Link>
-        </div>
+    <header className="relative w-full z-50">
+      <nav
+        className={`w-full transition-all duration-300 ${
+          isScrolled 
+            ? "py-2 shadow-md" 
+            : "py-4 shadow-md"
+        } bg-white`}
+      >
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Link
+              href="/"
+              className="transition-all duration-300 hover:opacity-90"
+            >
+              <Image
+                src="/images1/CSPIT_Logo.png"
+                alt="CSPIT Logo"
+                width={80}
+                height={80}
+                className="transition-all duration-300"
+              />
+            </Link>
+          </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-6">
-          {MENU_LINKS.map((item) =>
-            item.key ? (
-              <div key={item.key} className="relative group">
-                <button className="text-gray-700 hover:text-[#0056b3] font-medium py-2 text-base transition-all duration-200 hover:scale-105 flex items-center gap-1">
-                  {item.label}
-                  <svg
-                    className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <div className="absolute left-1/2 -translate-x-1/2 hidden group-hover:flex w-screen max-w-4xl bg-white/95 backdrop-blur-md shadow-2xl rounded-xl p-6 gap-8 z-50 top-full opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out border border-gray-100 translate-y-2 group-hover:translate-y-0">
-                  <div className="grid grid-cols-3 gap-8 w-full">
-                    {item.children.map((cat) => (
-                      <div key={cat.title} className="space-y-4">
-                        <h3 className="font-semibold text-[#0056b3] text-base md:text-lg">
-                          {cat.title}
-                        </h3>
-                        <div className="space-y-3">
-                          {cat.links.map((ln) => (
-                            <Link
-                              key={ln.label}
-                              href={ln.href}
-                              target={ln.target}
-                              className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base"
-                            >
-                              {ln.label}
-                            </Link>
-                          ))}
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-6">
+            {MENU_LINKS.map((item) =>
+              item.key ? (
+                <div key={item.key} className="relative group">
+                  <button className="text-gray-700 hover:text-[#0056b3] font-medium py-2 text-base transition-all duration-200 hover:scale-105 flex items-center gap-1">
+                    {item.label}
+                    <svg
+                      className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                  <div className="absolute left-1/2 -translate-x-1/2 hidden group-hover:flex w-screen max-w-4xl bg-white shadow-2xl rounded-xl p-6 gap-8 z-50 top-full opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out border border-gray-100 translate-y-2 group-hover:translate-y-0">
+                    <div className="grid grid-cols-3 gap-8 w-full">
+                      {item.children.map((cat) => (
+                        <div key={cat.title} className="space-y-4">
+                          <h3 className="font-semibold text-[#0056b3] text-base md:text-lg">
+                            {cat.title}
+                          </h3>
+                          <div className="space-y-3">
+                            {cat.links.map((ln) => (
+                              <Link
+                                key={ln.label}
+                                href={ln.href}
+                                target={ln.target}
+                                className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base"
+                              >
+                                {ln.label}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <Link
-                key={item.label}
-                href={item.href}
-                target={item.target}
-                className="text-gray-700 hover:text-[#0056b3] font-medium py-2 text-base transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#0056b3] after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {item.label}
-              </Link>
-            )
-          )}
-        </div>
+              ) : (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  target={item.target}
+                  className="text-gray-700 hover:text-[#0056b3] font-medium py-2 text-base transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#0056b3] after:transition-all after:duration-300 hover:after:w-full"
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
+          </div>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button
-            className="text-gray-700 focus:outline-none p-2 hover:bg-gray-100 rounded-lg transition-colors"
-            onClick={handleMobileToggle}
-          >
-            <svg
-              className="w-6 h-6 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              className="text-gray-700 focus:outline-none p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              onClick={handleMobileToggle}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d={
-                  isMobileMenuOpen
-                    ? "M6 18L18 6M6 6l12 12"
-                    : "M4 6h16M4 12h16m-7 6h7"
-                }
-              ></path>
-            </svg>
-          </button>
+              <svg
+                className="w-6 h-6 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d={
+                    isMobileMenuOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M4 6h16M4 12h16m-7 6h7"
+                  }
+                ></path>
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-2xl z-50 md:hidden">
+          <div className="w-full bg-white shadow-2xl z-50 md:hidden">
             <div className="p-4 space-y-4 max-h-[80vh] overflow-y-auto">
               {MENU_LINKS.map((item) =>
                 item.key ? (

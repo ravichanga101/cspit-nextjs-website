@@ -1373,3 +1373,19 @@
 .animation-delay-4000 {
   animation-delay: 4s;
 }
+
+/* Hero section styles - updated to be relative position */
+.hero-section {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* Rounded corners for first section are still nice */
+.content-wrapper > section:first-child {
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  margin-top: -32px;
+  padding-top: 48px;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+}
