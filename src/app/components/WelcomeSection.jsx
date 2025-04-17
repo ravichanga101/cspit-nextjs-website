@@ -110,18 +110,6 @@ const WelcomeSection = () => {
     <section className="py-12 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-8 mb-12">
-          {/* Welcome Image */}
-          <div className="w-full lg:w-1/2 relative h-[400px] rounded-lg overflow-hidden">
-            <Image
-              src="/images/ahmedabad-research-bg.jpg"
-              alt="CSPIT Campus"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-blue-900/30"></div>
-          </div>
-
           {/* Welcome Text */}
           <div className="w-full lg:w-1/2">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
@@ -156,6 +144,61 @@ const WelcomeSection = () => {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+          {/* Welcome Image */}
+          <div className="w-full lg:w-1/2 relative h-[400px] rounded-lg overflow-hidden">
+            <Image
+              src="/images/ahmedabad-research-bg.jpg"
+              alt="CSPIT Campus"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-blue-900/30"></div>
+
+            {/* Action buttons below the image */}
+            <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center gap-4">
+              <a
+                href="#download-brochure"
+                className="px-4 py-2 bg-white text-blue-600 rounded-md font-medium text-sm shadow-lg hover:bg-blue-50 transition-all duration-300 flex items-center"
+              >
+                <svg
+                  className="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+                Download Brochure
+              </a>
+              <a
+                href="#apply-now"
+                className="px-4 py-2 bg-blue-600 text-white rounded-md font-medium text-sm shadow-lg hover:bg-blue-700 transition-all duration-300 flex items-center"
+              >
+                <svg
+                  className="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+                Apply Now
+              </a>
             </div>
           </div>
         </div>
@@ -224,47 +267,6 @@ const WelcomeSection = () => {
               </div>
             ))}
           </div>
-        </div>
-        {/* CTA buttons */}
-        <div className="flex flex-wrap justify-center gap-5 mt-6">
-          <a
-            href="#under-graduate-programs"
-            className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
-          >
-            Download Brochure
-            <svg
-              className="w-4 h-4 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
-          <a
-            href="#contact-us"
-            className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-blue-600 text-blue-600 font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1"
-          >
-            Contact Us
-            <svg
-              className="w-4 h-4 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-              />
-            </svg>
-          </a>
         </div>
       </div>
     </section>
