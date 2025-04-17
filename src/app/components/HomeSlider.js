@@ -44,7 +44,7 @@ export default function HomeSlider() {
 
   return (
     <section id="banner" className="section-1">
-      <div className="relative w-full h-[100vh]">
+      <div className="relative w-full h-[90vh]">
         <Carousel
           setApi={setApi}
           className="w-full h-full"
@@ -55,10 +55,7 @@ export default function HomeSlider() {
         >
           <CarouselContent className="-ml-0">
             {slides.map((slide, index) => (
-              <CarouselItem
-                key={slide}
-                className="pl-0 relative w-full h-[100vh]"
-              >
+              <CarouselItem key={slide} className="pl-0 relative w-full h-full">
                 <div className="relative w-full h-full">
                   <Image
                     src={slide}
@@ -67,7 +64,6 @@ export default function HomeSlider() {
                     priority={index === 0}
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-black/30" />
                 </div>
               </CarouselItem>
             ))}

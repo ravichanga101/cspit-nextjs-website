@@ -25,9 +25,6 @@ export default function FacultyAndStaff({ faculties }) {
                 <div className="relative w-full h-48 mb-4">
                   <Image
                     src={faculty.image || "/CSPIT_Faculty/profile.png"}
-                    onError={(e) => {
-                      e.currentTarget.src = "/CSPIT_Faculty/profile.png";
-                    }}
                     alt={faculty.name}
                     fill
                     className="object-cover rounded-t-lg"

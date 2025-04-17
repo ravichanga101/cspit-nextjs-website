@@ -120,7 +120,7 @@ const ResearchThrustAreas = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {researchAreas.map((area, index) => (
             <motion.div
-              key={index}
+              key={area.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -137,7 +137,7 @@ const ResearchThrustAreas = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl font-bold text-white mb-2">
+                    <h3 className="text-lg font-bold text-white mb-2">
                       {area.title}
                     </h3>
                   </div>

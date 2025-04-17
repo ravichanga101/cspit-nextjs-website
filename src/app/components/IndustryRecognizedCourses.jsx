@@ -16,35 +16,36 @@ const certificationPartners = [
 
 export default function IndustryRecognizedCourses() {
   return (
-    <section className="bg-gradient-to-b from-blue-600 to-blue-700 py-16 md:py-24">
+    <section className="bg-gray-50 py-16 md:py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
             Industry Recognized Courses
           </h2>
-          <p className="text-blue-100">
-            Empowering students with industry-relevant certifications
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Empowering students with industry-relevant certifications for
+            real-world career readiness
           </p>
-          <div className="h-1 w-32 mx-auto mt-4 bg-white/20 rounded-full"></div>
+          <div className="h-1 w-24 mx-auto mt-4 bg-blue-600 rounded-full"></div>
         </div>
 
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
             {certificationPartners.map((partner) => (
               <div
                 key={partner.logo}
-                className="bg-white rounded-xl p-4 shadow-lg transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+                className="bg-white rounded-lg p-3 border border-gray-100 hover:border-gray-200 shadow-sm hover:shadow transition-all duration-300"
               >
-                <div className="relative h-20">
+                <div className="relative h-16">
                   <Image
                     src={`/images1/industry courses/${partner.logo}.webp`}
                     alt={partner.name}
                     fill
-                    className="object-contain"
+                    className="object-contain p-1"
                   />
                 </div>
-                <div className="mt-3 text-center">
-                  <p className="text-sm font-medium text-gray-600">
+                <div className="mt-2 text-center">
+                  <p className="text-xs font-medium text-gray-700 line-clamp-2">
                     {partner.name}
                   </p>
                 </div>
