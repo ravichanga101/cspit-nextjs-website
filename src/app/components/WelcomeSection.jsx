@@ -207,7 +207,7 @@ const WelcomeSection = () => {
         <div className="mb-12 p-4 border border-blue-200 rounded-lg relative pb-8">
           {/* Centered Title with Background */}
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full shadow-md">
+            <div className="bg-blue-50 text-blue-600 px-6 py-2 rounded-full border border-blue-200">
               <h2 className="text-lg font-bold">Research Thrust Areas</h2>
             </div>
           </div>
@@ -243,10 +243,10 @@ const WelcomeSection = () => {
         </div>
 
         {/* Strategic Partners Section - with light blue gradient background */}
-        <div className="mb-12 py-8 px-4 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg shadow-sm relative pt-10">
+        <div className="mb-12 py-8 px-4 rounded-lg relative pt-10 border border-blue-200">
           {/* Centered Title with Background - matching Research Thrust Areas style */}
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full shadow-md">
+            <div className="bg-blue-50 text-blue-600 px-6 py-2 rounded-full border border-blue-200">
               <h2 className="text-lg font-bold">Strategic Partners</h2>
             </div>
           </div>
