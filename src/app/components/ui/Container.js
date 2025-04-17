@@ -17,9 +17,7 @@ export default function Container({
     <div
       className={`
         mx-auto
-        px-4
-        sm:px-6
-        lg:px-8
+        px-4 sm:px-6 lg:px-8
         w-full
         ${sizes[size]}
         ${className}

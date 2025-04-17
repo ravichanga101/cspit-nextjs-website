@@ -37,6 +37,7 @@ export function CardHeader({ className = "", children, ...props }) {
         py-4
         border-b
         border-gray-100
+        text-lg font-semibold
         ${className}
       `}
       {...props}
@@ -52,6 +53,7 @@ export function CardBody({ className = "", children, ...props }) {
       className={`
         px-6
         py-4
+        text-base text-gray-600
         ${className}
       `}
       {...props}
@@ -70,6 +72,7 @@ export function CardFooter({ className = "", children, ...props }) {
         border-t
         border-gray-100
         bg-gray-50
+        text-sm text-gray-500
         ${className}
       `}
       {...props}

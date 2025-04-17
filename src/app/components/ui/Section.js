@@ -19,9 +19,9 @@ export default function Section({
   };
 
   const sizes = {
-    small: "py-8",
-    default: "py-16",
-    large: "py-24",
+    small: "py-8", // 32px vertical padding
+    default: "py-16", // 64px vertical padding
+    large: "py-24", // 96px vertical padding
   };
 
   return (

@@ -1,9 +1,11 @@
+import { getAllFaculties } from "@/lib/facultyData";
 import FacultyAndStaff from "../components/FacultyAndStaff";
 
 export default function FacultyPage() {
+  const faculties = getAllFaculties();
   return (
     <div>
-      <FacultyAndStaff />
+      <FacultyAndStaff faculties={faculties} />
     </div>
   );
 }

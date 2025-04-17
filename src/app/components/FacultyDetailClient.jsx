@@ -19,8 +19,8 @@ export default function FacultyDetailClient({ faculty }) {
             <div className="relative w-64 h-64 mx-auto">
               <Image
                 id="faculty-image"
-                src={faculty.image || "/CSPIT_Faculty/Electronics/TRUSHIT.webp"}
-                alt={faculty.name || "Dr. Trushit Upadhyaya"}
+                src={faculty.image || "/CSPIT_Faculty/profile.png"}
+                alt={faculty.name || "--"}
                 fill
                 className="object-cover rounded-lg border-4 border-blue-600 shadow-lg transition-transform duration-300 hover:scale-105"
               />
@@ -28,7 +28,7 @@ export default function FacultyDetailClient({ faculty }) {
           </div>
           <div className="mt-6 text-center">
             <h1 className="text-2xl font-bold text-gray-800">
-              {faculty.name || "Dr. Trushit Upadhyaya"}
+              {faculty.name || "--"}
             </h1>
             <p className="text-lg font-semibold text-gray-600 mt-2">
               {faculty.title || "PROFESSOR, PRINCIPAL"}
@@ -84,7 +84,7 @@ export default function FacultyDetailClient({ faculty }) {
                     viewBox="0 0 24 24"
                   >
                     <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
-                    <path d="M12 4c-4.411 0-8 3.589-8 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zm0 14c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z" />
+                    <path d="M12 4c-4.411 0-8 3.589-8 8s3.589 8 8 8 8-3.589 8-8-2.691-6-6-6z" />
                   </svg>
                 </a>
               )}
@@ -116,33 +116,17 @@ export default function FacultyDetailClient({ faculty }) {
               {
                 id: "expertise",
                 title: "Areas of Expertise",
-                content:
-                  faculty.expertise ||
-                  "Antennas, Computer Networks, Microwave Engineering",
+                content: faculty.expertise || "--",
               },
               {
                 id: "subjects",
                 title: "Subjects Taught",
-                content:
-                  faculty.subjects ||
-                  "Electromagnetic Theory, Computer Networks, Python Programming, Analog Electronics",
+                content: faculty.subjects || "--",
               },
               {
                 id: "projects",
                 title: "Projects",
-                content: (
-                  <a
-                    href={
-                      faculty.projectsUrl ||
-                      "https://www.charusat.ac.in/cspit/trushitupadhyaya#Projects"
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800"
-                  >
-                    Click here for details →
-                  </a>
-                ),
+                content: faculty.teaching || "--",
               },
               {
                 id: "memberships",
@@ -152,47 +136,66 @@ export default function FacultyDetailClient({ faculty }) {
               {
                 id: "certifications",
                 title: "Certifications",
-                content:
-                  faculty.certifications ||
-                  "CISCO CERTIFIED NETWORK ASSOCIATE, CISCO CERTIFIED ACADEMY INSTRUCTOR",
+                content: faculty.certifications || "---",
               },
-            ].map((section) => (
-              <div
-                key={section.id}
-                className="border rounded-lg overflow-hidden"
-              >
-                <button
-                  className="w-full px-4 py-3 text-left bg-gray-50 hover:bg-gray-100 focus:outline-none flex justify-between items-center"
-                  onClick={() => toggleSection(section.id)}
-                >
-                  <span className="font-semibold">{section.title}</span>
-                  <svg
-                    className={`w-5 h-5 transform transition-transform ${
-                      openSection === section.id ? "rotate-180" : ""
-                    }`}
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
+            ]
+              .filter(
+                (section) =>
+                  !(
+                    (section.id === "projects" && section.content === "NA") ||
+                    (section.id === "certifications" &&
+                      ["NA", "---", "--"].includes(section.content))
+                  )
+              )
+              .map((section) => (
                 <div
-                  className={`px-4 py-3 transition-all duration-200 ${
-                    openSection === section.id ? "block" : "hidden"
-                  }`}
+                  key={section.id}
+                  className="border rounded-lg overflow-hidden"
                 >
-                  {typeof section.content === "string" ? (
-                    <p>{section.content}</p>
-                  ) : (
-                    section.content
-                  )}
+                  <button
+                    className="w-full px-4 py-3 text-left bg-gray-50 hover:bg-gray-100 focus:outline-none flex justify-between items-center"
+                    onClick={() => toggleSection(section.id)}
+                  >
+                    <span className="font-semibold">{section.title}</span>
+                    <svg
+                      className={`w-5 h-5 transform transition-transform ${
+                        openSection === section.id ? "rotate-180" : ""
+                      }`}
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    className={`px-4 py-3 transition-all duration-200 ${
+                      openSection === section.id ? "block" : "hidden"
+                    }`}
+                  >
+                    {typeof section.content === "string" ? (
+                      section.id === "projects" &&
+                      /^(https?:\/\/)/.test(section.content) ? (
+                        <a
+                          href={section.content}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800"
+                        >
+                          Click here for details
+                        </a>
+                      ) : (
+                        <p>{section.content}</p>
+                      )
+                    ) : (
+                      section.content
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>
@@ -212,7 +215,7 @@ FacultyDetailClient.propTypes = {
     scholar: PropTypes.string,
     expertise: PropTypes.string,
     subjects: PropTypes.string,
-    projectsUrl: PropTypes.string,
+    teaching: PropTypes.string,
     memberships: PropTypes.string,
     certifications: PropTypes.string,
   }).isRequired,

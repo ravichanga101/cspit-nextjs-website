@@ -44,7 +44,7 @@ export default function HomeSlider() {
 
   return (
     <section id="banner" className="section-1">
-      <div className="relative w-full h-[500px]">
+      <div className="relative w-full h-[100vh]">
         <Carousel
           setApi={setApi}
           className="w-full h-full"
@@ -57,7 +57,7 @@ export default function HomeSlider() {
             {slides.map((slide, index) => (
               <CarouselItem
                 key={slide}
-                className="pl-0 relative w-full h-[500px]"
+                className="pl-0 relative w-full h-[100vh]"
               >
                 <div className="relative w-full h-full">
                   <Image

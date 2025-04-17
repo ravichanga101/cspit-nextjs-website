@@ -1,108 +1,68 @@
-export default function FacultyAndStaff() {
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import PropTypes from "prop-types";
+
+export default function FacultyAndStaff({ faculties }) {
+  if (!faculties || faculties.length === 0) return null;
   return (
-    <section className="faculty-section">
-      <div className="container-fluid" style={{ width: "85%" }}>
-        <div className="faculty-title">
-          <h2>MEET OUR FACULTY</h2>
+    <section className="faculty-section py-12 bg-gray-100">
+      <div className="container mx-auto px-4" style={{ maxWidth: "85%" }}>
+        <div className="faculty-title text-center mb-8">
+          <h2 className="text-3xl font-bold">MEET OUR FACULTY</h2>
         </div>
 
-        <div className="faculty-layout">
-          <div className="faculty-cards-container" id="faculty-cards">
-            <div className="faculty-card">
-              <a
-                href="details.html?name=Dr.%20Aayushi%20Chaudhari%20%20"
-                className="text-decoration-none text-dark"
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {faculties.map((faculty) => (
+            <div
+              key={faculty.slug}
+              className="faculty-card bg-white rounded-lg shadow hover:shadow-lg transition"
+            >
+              <Link
+                href={`/faculty/${faculty.slug}`}
+                className="block text-center p-4"
               >
-                <div>
-                  <img
-                    src="CSPIT_Faculty/CE/AAYUSHI.webp"
-                    alt="Dr. Aayushi Chaudhari  "
+                <div className="relative w-full h-48 mb-4">
+                  <Image
+                    src={faculty.image || "/CSPIT_Faculty/profile.png"}
+                    onError={(e) => { e.currentTarget.src = "/CSPIT_Faculty/profile.png"; }}
+                    alt={faculty.name}
+                    fill
+                    className="object-cover rounded-t-lg"
                   />
-                  <h4>
-                    <strong>Dr. Aayushi Chaudhari </strong>
-                  </h4>
-                  <h5>ASSISTANT PROFESSOR</h5>
-                  <p>Ph. D.</p>
-                  <p>
-                    <strong>Research Interests:</strong>
-                    <br />
-                    C, C++, Computer Vision
-                  </p>
                 </div>
-              </a>
-            </div>
-            <div className="faculty-card">
-              <a
-                href="details.html?name=Dr.%20John%20Doe"
-                className="text-decoration-none text-dark"
-              >
-                <div>
-                  <img
-                    src="CSPIT_Faculty/CE/JOHN_DOE.webp"
-                    alt="Dr. John Doe"
-                  />
-                  <h4>
-                    <strong>Dr. John Doe</strong>
-                  </h4>
-                  <h5>PROFESSOR</h5>
-                  <p>Ph. D. in Artificial Intelligence</p>
-                  <p>
-                    <strong>Research Interests:</strong>
-                    <br />
-                    Machine Learning, AI, Data Science
+                <h4 className="text-xl font-semibold text-gray-800">
+                  {faculty.name}
+                </h4>
+                <h5 className="text-md text-gray-600 mt-1">
+                  {faculty.title}
+                </h5>
+                <p className="text-sm text-gray-500 mt-1">
+                  {faculty.degree}
+                </p>
+                {faculty.researchInterests && (
+                  <p className="text-sm text-gray-700 mt-2">
+                    <strong>Research Interests:</strong> {faculty.researchInterests}
                   </p>
-                </div>
-              </a>
+                )}
+              </Link>
             </div>
-            <div className="faculty-card">
-              <a
-                href="details.html?name=Dr.%20Jane%20Smith"
-                className="text-decoration-none text-dark"
-              >
-                <div>
-                  <img
-                    src="CSPIT_Faculty/CE/JANE_SMITH.webp"
-                    alt="Dr. Jane Smith"
-                  />
-                  <h4>
-                    <strong>Dr. Jane Smith</strong>
-                  </h4>
-                  <h5>ASSOCIATE PROFESSOR</h5>
-                  <p>Ph. D. in Cybersecurity</p>
-                  <p>
-                    <strong>Research Interests:</strong>
-                    <br />
-                    Network Security, Cryptography
-                  </p>
-                </div>
-              </a>
-            </div>
-            <div className="faculty-card">
-              <a
-                href="details.html?name=Dr.%20Emily%20Clark"
-                className="text-decoration-none text-dark"
-              >
-                <div>
-                  <img
-                    src="CSPIT_Faculty/CE/EMILY_CLARK.webp"
-                    alt="Dr. Emily Clark"
-                  />
-                  <h4>
-                    <strong>Dr. Emily Clark</strong>
-                  </h4>
-                  <h5>ASSISTANT PROFESSOR</h5>
-                  <p>Ph. D. in Software Engineering</p>
-                  <p>
-                    <strong>Research Interests:</strong>
-                    <br />
-                    Agile Development, Software Testing
-                  </p>
-                </div>
-              </a>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
+FacultyAndStaff.propTypes = {
+  faculties: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      title: PropTypes.string,
+      degree: PropTypes.string,
+      image: PropTypes.string,
+      researchInterests: PropTypes.string,
+      slug: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};

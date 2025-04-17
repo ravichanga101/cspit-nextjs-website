@@ -20,7 +20,7 @@ const Footer = () => {
                 alt="Institute Logo"
               />
             </div>
-            <h5 className="text-lg font-bold text-center mb-6">
+            <h5 className="text-lg font-semibold text-center mb-6">
               CHANDUBHAI S. PATEL <br />
               INSTITUTE OF TECHNOLOGY
             </h5>
@@ -35,11 +35,11 @@ const Footer = () => {
 
           {/* Column 2 - Quick Links */}
           <div className="flex flex-col">
-            <h5 className="text-white font-bold text-xl mb-6">Quick Links</h5>
+            <h5 className="text-lg font-semibold mb-6">Quick Links</h5>
             <ul className="space-y-4">
               <li>
                 <a
-                  className="hover:text-white/80 transition-colors duration-300 flex items-center group"
+                  className="text-base hover:text-white/80 transition-colors duration-300 flex items-center group"
                   href="https://www.charusat.ac.in/cspit/files/CSPIT_Mandatory%20Disclosure_2023-24.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -51,7 +51,7 @@ const Footer = () => {
               </li>
               <li>
                 <button
-                  className="hover:text-white/80 transition-colors duration-300 flex items-center group"
+                  className="text-base hover:text-white/80 transition-colors duration-300 flex items-center group"
                   onClick={() => openCustomPopup("customPopupNIRF")}
                 >
                   <span className="transform group-hover:translate-x-2 transition-transform duration-300">
@@ -61,7 +61,7 @@ const Footer = () => {
               </li>
               <li>
                 <button
-                  className="hover:text-white/80 transition-colors duration-300 flex items-center group"
+                  className="text-base hover:text-white/80 transition-colors duration-300 flex items-center group"
                   onClick={() => openCustomPopup("customPopupAICTE")}
                 >
                   <span className="transform group-hover:translate-x-2 transition-transform duration-300">
@@ -84,7 +84,7 @@ const Footer = () => {
 
           {/* Column 3 - Contact Us */}
           <div className="flex flex-col">
-            <h5 className="text-white font-bold text-xl mb-6">Contact Us</h5>
+            <h5 className="text-lg font-semibold mb-6">Contact Us</h5>
             <ul className="space-y-6">
               <li className="flex items-start group">
                 <div className="bg-white/20 p-2 rounded-lg mr-4 group-hover:bg-white/30 transition-colors duration-300">
@@ -96,7 +96,7 @@ const Footer = () => {
                     <path d="M18.92 351.2l108.5-46.52c12.78-5.531 27.77-1.801 36.45 8.98l44.09 53.82c69.25-34 125.5-90.31 159.5-159.5l-53.81-44.04c-10.75-8.781-14.41-23.69-8.974-36.47l46.51-108.5c6.094-13.91 21.1-21.52 35.79-18.11l100.8 23.25c14.25 3.25 24.22 15.8 24.22 30.46c0 252.3-205.2 457.5-457.5 457.5c-14.67 0-27.18-9.968-30.45-24.22l-23.25-100.8C-2.571 372.4 5.018 357.2 18.92 351.2z" />
                   </svg>
                 </div>
-                <span className="group-hover:text-white/80 transition-colors duration-300">
+                <span className="text-base group-hover:text-white/80 transition-colors duration-300">
                   +91-2697-265112
                 </span>
               </li>
@@ -135,7 +135,7 @@ const Footer = () => {
 
           {/* Column 4 - Location Map */}
           <div className="flex flex-col">
-            <h5 className="text-white font-bold text-xl mb-6">Location</h5>
+            <h5 className="text-lg font-semibold mb-6">Location</h5>
             <div className="relative w-full h-[190px] rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-300">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.41961737984!2d72.81767727475798!3d22.60080043193719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e50c699400001%3A0xb50162f2acb04c04!2sCSPIT%20(CE%2FIT)!5e0!3m2!1sen!2sin!4v1729709960389!5m2!1sen!2sin"

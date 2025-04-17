@@ -1,33 +1,29 @@
-import PropTypes from "prop-types";
 import FacultyDetailClient from "../../components/FacultyDetailClient";
+import { getAllFaculties, getFacultyBySlug } from "@/lib/facultyData";
+import { notFound } from "next/navigation";
 
-export default function FacultyDetail({ params }) {
-  // This is where you would fetch faculty data based on params.id
-  // For now using static data
-  const faculty = {
-    name: "Dr. Trushit Upadhyaya",
-    title: "PROFESSOR, PRINCIPAL",
-    degree: "Ph. D.",
-    image: "/CSPIT_Faculty/Electronics/TRUSHIT.webp",
-    email: "trushitupadhyay.ec@charusat.ac.in",
-    linkedin: "https://www.linkedin.com/in/tkupadhyaya/",
-    website: "https://www.charusat.ac.in/cspit/trushitupadhyaya",
-    scholar:
-      "https://scholar.google.com/citations?user=GzsxoNAoAAAAJ&hl=en&oi=ao",
-    expertise: "Antennas, Computer Networks, Microwave Engineering",
-    subjects:
-      "Electromagnetic Theory, Computer Networks, Python Programming, Analog Electronics",
-    projectsUrl: "https://www.charusat.ac.in/cspit/trushitupadhyaya#Projects",
-    memberships: "IEEE, ISTE",
-    certifications:
-      "CISCO CERTIFIED NETWORK ASSOCIATE, CISCO CERTIFIED ACADEMY INSTRUCTOR",
-  };
-
-  return <FacultyDetailClient faculty={faculty} />;
+export async function generateStaticParams() {
+  return getAllFaculties().map((f) => ({ id: f.slug }));
 }
 
-FacultyDetail.propTypes = {
-  params: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  }).isRequired,
-};
+export async function generateMetadata({ params }) {
+  const faculty = getFacultyBySlug(params.id);
+  if (!faculty) {
+    return { title: "Faculty Not Found" };
+  }
+  return {
+    title: faculty.name,
+    description: faculty.expertise,
+    openGraph: {
+      title: faculty.name,
+      description: faculty.expertise,
+      images: [faculty.image],
+    },
+  };
+}
+
+export default function FacultyDetail({ params }) {
+  const faculty = getFacultyBySlug(params.id);
+  if (!faculty) notFound();
+  return <FacultyDetailClient faculty={faculty} />;
+}

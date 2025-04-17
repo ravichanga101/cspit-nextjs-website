@@ -5,48 +5,66 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Navbar() {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState(null);
+
+  const toggleSubmenu = (menu) => {
+    setActiveSubmenu(activeSubmenu === menu ? null : menu);
+  };
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50">
-      <nav className="container mx-auto flex items-center justify-between p-4">
+    <header className="bg-white shadow-md sticky top-0 z-50 border-b border-gray-200">
+      <nav className="container mx-auto flex items-center justify-between p-2">
         {/* Logo */}
         <div className="flex items-center">
           <Link
             href="/"
-            className="transition-transform hover:scale-105 duration-300"
+            className="transition-all duration-300 hover:opacity-90"
           >
             <Image
               src="/images1/CSPIT_Logo.png"
               alt="CSPIT Logo"
-              width={70}
-              height={70}
-              className="rounded-full shadow-md hover:shadow-lg transition-all"
+              width={80}
+              height={80}
+              className="transition-all duration-300"
             />
           </Link>
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6">
           <Link
             href="#placement"
-            className="text-gray-700 hover:text-[#0056b3] font-medium transition-colors duration-200"
+            className="text-gray-700 hover:text-[#0056b3] font-medium py-2 text-base transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#0056b3] after:transition-all after:duration-300 hover:after:w-full"
           >
             Placement
           </Link>
           <Link
             href="#gallery"
-            className="text-gray-700 hover:text-[#0056b3] font-medium transition-colors duration-200"
+            className="text-gray-700 hover:text-[#0056b3] font-medium py-2 text-base transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#0056b3] after:transition-all after:duration-300 hover:after:w-full"
           >
             Gallery
           </Link>
 
           {/* Academics Mega Menu */}
           <div className="relative group">
-            <button className="text-gray-700 hover:text-[#0056b3] font-medium py-2 transition-colors duration-200">
+            <button className="text-gray-700 hover:text-[#0056b3] font-medium py-2 text-base transition-all duration-200 hover:scale-105 flex items-center gap-1">
               Academics
+              <svg
+                className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
             </button>
-            <div className="absolute left-1/4 -translate-x-1/2 hidden group-hover:flex w-screen max-w-4xl bg-white shadow-2xl rounded-xl p-6 gap-8 z-50 top-full opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out border border-gray-100">
+            <div className="absolute left-1/2 -translate-x-1/2 hidden group-hover:flex w-screen max-w-4xl bg-white/95 backdrop-blur-md shadow-2xl rounded-xl p-6 gap-8 z-50 top-full opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out border border-gray-100 translate-y-2 group-hover:translate-y-0">
               <div className="flex-1">
                 <h3 className="font-semibold text-[#0056b3] mb-4 text-lg">
                   Programs
@@ -54,20 +72,20 @@ export default function Navbar() {
                 <div className="space-y-3">
                   <Link
                     href="#under-graduate-programs"
-                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base"
                   >
                     Undergraduate Programs
                   </Link>
                   <Link
                     href="#post-graduate-programs"
-                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base"
                   >
                     Postgraduate Programs
                   </Link>
                   <Link
                     href="https://www.charusat.ac.in/assets/files/PHD/PhD_Regulations.pdf"
                     target="_blank"
-                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base"
                   >
                     Ph.D.
                   </Link>
@@ -139,10 +157,23 @@ export default function Navbar() {
 
           {/* Student Corner Mega Menu */}
           <div className="relative group">
-            <button className="text-gray-700 hover:text-[#0056b3] font-medium py-2 transition-colors duration-200">
+            <button className="text-gray-700 hover:text-[#0056b3] font-medium py-2 text-base transition-all duration-200 hover:scale-105 flex items-center gap-1">
               Student Corner
+              <svg
+                className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
             </button>
-            <div className="absolute left-0 -translate-x-[60%] hidden group-hover:flex w-screen max-w-4xl bg-white shadow-2xl rounded-xl p-6 gap-8 z-50 top-full opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out border border-gray-100">
+            <div className="absolute left-0 -translate-x-[60%] hidden group-hover:flex w-screen max-w-4xl bg-white/95 backdrop-blur-md shadow-2xl rounded-xl p-6 gap-8 z-50 top-full opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out border border-gray-100 translate-y-2 group-hover:translate-y-0">
               <div className="grid grid-cols-3 gap-8 w-full">
                 <div className="space-y-4">
                   <h3 className="font-semibold text-[#0056b3] text-lg">
@@ -152,21 +183,21 @@ export default function Navbar() {
                     <Link
                       href="https://www.charusat.ac.in/documents/pdfs/data_1/Code_Of_Conduct/Student%20code%20of%20Conduct.pdf"
                       target="_blank"
-                      className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                      className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base"
                     >
                       Code Of Conduct
                     </Link>
                     <Link
                       href="drive.html?folderId=1LgF2k8N_GeRCs-O50PvXUiywW-Bk8Lyw&amp;heading=STUDENT%20HANDBOOK"
                       target="_blank"
-                      className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                      className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base"
                     >
                       Student Handbook
                     </Link>
                     <Link
                       href="drive.html?folderId=1CrY0oeDZrnVZRuBwtTIp3MVIs9EoXCl2&amp;heading=SYLLABUS"
                       target="_blank"
-                      className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                      className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base"
                     >
                       Syllabus
                     </Link>
@@ -236,20 +267,20 @@ export default function Navbar() {
 
           <Link
             href="/faculty"
-            className="text-gray-700 hover:text-[#0056b3] font-medium transition-colors duration-200"
+            className="text-gray-700 hover:text-[#0056b3] font-medium py-2 text-base transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#0056b3] after:transition-all after:duration-300 hover:after:w-full"
           >
             Faculty & Staff
           </Link>
           <Link
             href="https://alumni.charusat.ac.in/"
             target="_blank"
-            className="text-gray-700 hover:text-[#0056b3] font-medium transition-colors duration-200"
+            className="text-gray-700 hover:text-[#0056b3] font-medium py-2 text-base transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#0056b3] after:transition-all after:duration-300 hover:after:w-full"
           >
             Alumni
           </Link>
           <Link
             href="#contact-us"
-            className="text-gray-700 hover:text-[#0056b3] font-medium transition-colors duration-200"
+            className="text-gray-700 hover:text-[#0056b3] font-medium py-2 text-base transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#0056b3] after:transition-all after:duration-300 hover:after:w-full"
           >
             Contact Us
           </Link>
@@ -259,10 +290,10 @@ export default function Navbar() {
         <div className="md:hidden">
           <button
             className="text-gray-700 focus:outline-none p-2 hover:bg-gray-100 rounded-lg transition-colors"
-            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <svg
-              className="w-6 h-6"
+              className="w-6 h-6 transition-transform duration-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -283,100 +314,161 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white shadow-2xl z-50 md:hidden">
-            <div className="p-4 space-y-4 max-h-[80vh] overflow-y-auto">
-              <Link
-                href="#placement"
-                className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-              >
-                Placement
-              </Link>
-              <Link
-                href="#gallery"
-                className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-              >
-                Gallery
-              </Link>
+        <div
+          className={`absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-2xl z-50 md:hidden transform transition-all duration-300 ease-in-out ${
+            isMobileMenuOpen
+              ? "translate-y-0 opacity-100"
+              : "-translate-y-full opacity-0"
+          }`}
+        >
+          <div className="p-4 space-y-4 max-h-[80vh] overflow-y-auto">
+            <Link
+              href="#placement"
+              className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Placement
+            </Link>
+            <Link
+              href="#gallery"
+              className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Gallery
+            </Link>
 
-              {/* Mobile Academics Menu */}
-              <div className="space-y-2">
-                <div className="font-semibold text-[#0056b3]">Academics</div>
-                <div className="pl-4 space-y-2">
-                  <Link
-                    href="#under-graduate-programs"
-                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-                  >
-                    Undergraduate Programs
-                  </Link>
-                  <Link
-                    href="#post-graduate-programs"
-                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-                  >
-                    Postgraduate Programs
-                  </Link>
-                  <Link
-                    href="https://www.charusat.ac.in/assets/files/PHD/PhD_Regulations.pdf"
-                    target="_blank"
-                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-                  >
-                    Ph.D.
-                  </Link>
-                </div>
+            {/* Mobile Academics Menu */}
+            <div className="space-y-2">
+              <button
+                className="flex items-center justify-between w-full text-gray-700 hover:text-[#0056b3] transition-all duration-200 text-base font-medium"
+                onClick={() => toggleSubmenu("academics")}
+              >
+                <span>Academics</span>
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    activeSubmenu === "academics" ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div
+                className={`pl-4 space-y-2 ${
+                  activeSubmenu === "academics" ? "block" : "hidden"
+                }`}
+              >
+                <Link
+                  href="#under-graduate-programs"
+                  className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Undergraduate Programs
+                </Link>
+                <Link
+                  href="#post-graduate-programs"
+                  className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Postgraduate Programs
+                </Link>
+                <Link
+                  href="https://www.charusat.ac.in/assets/files/PHD/PhD_Regulations.pdf"
+                  target="_blank"
+                  className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Ph.D.
+                </Link>
               </div>
-
-              {/* Mobile Student Corner Menu */}
-              <div className="space-y-2">
-                <div className="font-semibold text-[#0056b3]">
-                  Student Corner
-                </div>
-                <div className="pl-4 space-y-2">
-                  <Link
-                    href="https://www.charusat.ac.in/documents/pdfs/data_1/Code_Of_Conduct/Student%20code%20of%20Conduct.pdf"
-                    target="_blank"
-                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-                  >
-                    Code Of Conduct
-                  </Link>
-                  <Link
-                    href="https://charusat.edu.in:912/Uniexamresult/"
-                    target="_blank"
-                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-                  >
-                    View Result
-                  </Link>
-                  <Link
-                    href="https://charusat.edu.in:912/FeesPaymentApp/"
-                    target="_blank"
-                    className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-                  >
-                    Pay Fees
-                  </Link>
-                </div>
-              </div>
-
-              <Link
-                href="/faculty"
-                className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-              >
-                Faculty & Staff
-              </Link>
-              <Link
-                href="https://alumni.charusat.ac.in/"
-                target="_blank"
-                className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-              >
-                Alumni
-              </Link>
-              <Link
-                href="#contact-us"
-                className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
-              >
-                Contact Us
-              </Link>
             </div>
+
+            {/* Mobile Student Corner Menu */}
+            <div className="space-y-2">
+              <button
+                className="flex items-center justify-between w-full text-gray-700 hover:text-[#0056b3] transition-all duration-200 text-base font-medium"
+                onClick={() => toggleSubmenu("student")}
+              >
+                <span>Student Corner</span>
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    activeSubmenu === "student" ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div
+                className={`pl-4 space-y-2 ${
+                  activeSubmenu === "student" ? "block" : "hidden"
+                }`}
+              >
+                <Link
+                  href="https://www.charusat.ac.in/documents/pdfs/data_1/Code_Of_Conduct/Student%20code%20of%20Conduct.pdf"
+                  target="_blank"
+                  className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Code Of Conduct
+                </Link>
+                <Link
+                  href="https://charusat.edu.in:912/Uniexamresult/"
+                  target="_blank"
+                  className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  View Result
+                </Link>
+                <Link
+                  href="https://charusat.edu.in:912/FeesPaymentApp/"
+                  target="_blank"
+                  className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Pay Fees
+                </Link>
+              </div>
+            </div>
+
+            <Link
+              href="/faculty"
+              className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Faculty & Staff
+            </Link>
+            <Link
+              href="https://alumni.charusat.ac.in/"
+              target="_blank"
+              className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Alumni
+            </Link>
+            <Link
+              href="#contact-us"
+              className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact Us
+            </Link>
           </div>
-        )}
+        </div>
       </nav>
     </header>
   );

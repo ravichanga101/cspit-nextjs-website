@@ -93,41 +93,44 @@ export default function StudentClubs() {
   return (
     <section className="bg-blue-600 py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-white mb-12">
-          STUDENT CLUBS
-        </h2>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-white mb-4">Student Clubs</h2>
+          <p className="text-blue-100">
+            Fostering innovation and collaboration through student-led
+            communities
+          </p>
+          <div className="h-1 w-32 mx-auto mt-4 bg-white/20 rounded-full"></div>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {clubsData.map((club) => (
-            <div
-              key={club.name}
-              className="group bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2"
-            >
+        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            {clubsData.map((club) => (
               <a
+                key={club.name}
                 href={club.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block relative"
+                className="bg-white rounded-xl p-4 shadow-lg transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
               >
-                <div className="relative h-48 w-full">
+                <div className="relative h-20">
                   <Image
                     src={club.image}
                     alt={club.name}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="object-contain"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-4">
-                    <h4 className="text-lg font-semibold text-center mb-2">
-                      {club.name}
-                    </h4>
-                    <span className="inline-block px-3 py-1 bg-blue-600 rounded-full text-sm">
-                      {club.category}
-                    </span>
-                  </div>
+                </div>
+                <div className="mt-3 text-center">
+                  <p className="text-sm font-medium text-gray-600">
+                    {club.name}
+                  </p>
+                  <span className="inline-block px-2 py-1 mt-1 bg-blue-50 rounded-full text-xs text-blue-600">
+                    {club.category}
+                  </span>
                 </div>
               </a>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -11,8 +11,11 @@ export default function TestimonialSlider() {
     if (containerRef.current && !isAnimating) {
       setIsAnimating(true);
       const firstCard = containerRef.current.firstElementChild;
-      containerRef.current.style.transition = "transform 1s cubic-bezier(0.4, 0, 0.2, 1)";
-      containerRef.current.style.transform = `translateX(-${firstCard.offsetWidth + 32}px)`;
+      containerRef.current.style.transition =
+        "transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
+      containerRef.current.style.transform = `translateX(-${
+        firstCard.offsetWidth + 32
+      }px)`;
 
       setTimeout(() => {
         containerRef.current.style.transition = "none";
@@ -20,7 +23,7 @@ export default function TestimonialSlider() {
         containerRef.current.appendChild(firstCard.cloneNode(true));
         firstCard.remove();
         setIsAnimating(false);
-      }, 1000);
+      }, 800);
     }
   };
 
@@ -30,14 +33,17 @@ export default function TestimonialSlider() {
       const cards = containerRef.current.children;
       const lastCard = cards[cards.length - 1];
       containerRef.current.style.transition = "none";
-      containerRef.current.style.transform = `translateX(-${lastCard.offsetWidth + 32}px)`;
+      containerRef.current.style.transform = `translateX(-${
+        lastCard.offsetWidth + 32
+      }px)`;
       containerRef.current.insertBefore(lastCard.cloneNode(true), cards[0]);
       lastCard.remove();
 
       requestAnimationFrame(() => {
-        containerRef.current.style.transition = "transform 1s cubic-bezier(0.4, 0, 0.2, 1)";
+        containerRef.current.style.transition =
+          "transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
         containerRef.current.style.transform = "translateX(0)";
-        setTimeout(() => setIsAnimating(false), 1000);
+        setTimeout(() => setIsAnimating(false), 800);
       });
     }
   };
@@ -51,7 +57,7 @@ export default function TestimonialSlider() {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
-    if (direction === 'left') {
+    if (direction === "left") {
       slideLeft();
     } else {
       slideRight();
@@ -60,23 +66,25 @@ export default function TestimonialSlider() {
   };
 
   return (
-    <section className="testimonials-section animate-on-scroll overflow-hidden">
+    <section className="testimonials-section">
       <div className="container mx-auto px-4 relative">
-        <h2 className="relative pb-4 mb-12">
+        <h2 className="relative pb-4 mb-12 text-center">
           TESTIMONIALS
           <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-[#ffcc00] to-[#0056b3]"></span>
         </h2>
-        
+
         <div className="testimonials-slider">
-          <button 
+          <button
             className="slider-btn left-btn group"
-            onClick={() => handleSlide('left')}
+            onClick={() => handleSlide("left")}
             disabled={isAnimating}
             aria-label="Previous testimonial"
           >
-            <span className="text-3xl leading-none transition-all duration-300 group-hover:scale-125">‹</span>
+            <span className="text-3xl leading-none transition-all duration-300 group-hover:scale-125">
+              ‹
+            </span>
           </button>
-          
+
           <div className="testimonials-container" ref={containerRef}>
             <div className="testimonial-card group">
               <div className="testimonial-card-image-wrapper">
@@ -93,10 +101,10 @@ export default function TestimonialSlider() {
                 <p className="testimonial-card-designation">Student</p>
                 <p className="testimonial-card-paragraph">
                   The Computer Science and Engineering (CSE) department at our
-                  college provides an outstanding learning environment! Along with
-                  regular classes, the department organizes fun activities like
-                  the Tower of Hanoi challenge and treasure hunts, making learning
-                  both enjoyable and interesting.
+                  college provides an outstanding learning environment! Along
+                  with regular classes, the department organizes fun activities
+                  like the Tower of Hanoi challenge and treasure hunts, making
+                  learning both enjoyable and interesting.
                 </p>
               </div>
             </div>
@@ -115,10 +123,10 @@ export default function TestimonialSlider() {
                 <h3 className="testimonial-card-name">Amit Panchal</h3>
                 <p className="testimonial-card-designation">Parent</p>
                 <p className="testimonial-card-paragraph">
-                  As a parent of Shruti Panchal (22CS044) in the Computer Science
-                  & Engineering department, I want to express my sincere gratitude
-                  for the excellent education and support provided by the
-                  department.
+                  As a parent of Shruti Panchal (22CS044) in the Computer
+                  Science & Engineering department, I want to express my sincere
+                  gratitude for the excellent education and support provided by
+                  the department.
                 </p>
               </div>
             </div>
@@ -145,14 +153,16 @@ export default function TestimonialSlider() {
               </div>
             </div>
           </div>
-          
-          <button 
+
+          <button
             className="slider-btn right-btn group"
-            onClick={() => handleSlide('right')}
+            onClick={() => handleSlide("right")}
             disabled={isAnimating}
             aria-label="Next testimonial"
           >
-            <span className="text-3xl leading-none transition-all duration-300 group-hover:scale-125">›</span>
+            <span className="text-3xl leading-none transition-all duration-300 group-hover:scale-125">
+              ›
+            </span>
           </button>
         </div>
       </div>

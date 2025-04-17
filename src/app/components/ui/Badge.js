@@ -8,9 +8,9 @@ const variants = {
 };
 
 const sizes = {
-  sm: "px-2 py-0.5 text-xs",
-  md: "px-2.5 py-1 text-sm",
-  lg: "px-3 py-1.5 text-base",
+  sm: "px-2 py-0.5 text-xs", // Using our --font-size-xs variable (12px)
+  md: "px-2.5 py-1 text-sm", // Using our --font-size-sm variable (14px)
+  lg: "px-3 py-1.5 text-base", // Using our --font-size-base variable (16px)
 };
 
 export default function Badge({
