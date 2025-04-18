@@ -164,7 +164,6 @@ export default function Navbar() {
             {MAIN_MENU_LINKS.map((item) => (
               <div
                 key={item.label}
-                className="relative"
                 onMouseEnter={() => handleMenuItemHover(item.label)}
                 onMouseLeave={handleMenuItemLeave}
               >
@@ -186,23 +185,17 @@ export default function Navbar() {
 
                     {/* Full-width submenu with blue background */}
                     <div
-                      className="absolute left-0 w-screen bg-[#003b75] text-white z-[100]"
-                      style={{
-                        top: "100%",
-                        left: "50%",
-                        right: "auto",
-                        transform: "translateX(-50%)",
-                      }}
+                      className="absolute top-full inset-x-0 bg-[#003b75] text-white z-50"
                       onMouseEnter={handleSubmenuHover}
                       onMouseLeave={handleSubmenuLeave}
                     >
-                      <div className="container mx-auto">
+                      <div className="container mx-auto px-4">
                         <div className="flex flex-wrap w-full bg-[#003b75]">
                           {item.subMenu.map((subItem) => (
                             <Link
                               key={subItem.label}
                               href={subItem.href}
-                              className="px-8 py-5 text-sm hover:bg-[#00305e] transition-colors font-medium border-r border-[#004a8e] flex-1 text-left bg-[#003b75]"
+                              className="px-6 py-4 text-sm hover:bg-[#00305e] transition-colors font-medium border-r border-[#004a8e] flex-1 text-left"
                             >
                               {subItem.label}
                             </Link>
