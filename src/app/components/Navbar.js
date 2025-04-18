@@ -6,8 +6,8 @@ import Link from "next/link";
 
 // Main menu items with submenu for ACADEMICS
 const MAIN_MENU_LINKS = [
-  { label: "HOME", href: "/" },
   { label: "ABOUT US", href: "#about-us" },
+
   {
     label: "ACADEMICS",
     href: "#academics",
@@ -15,18 +15,76 @@ const MAIN_MENU_LINKS = [
       { label: "UNDERGRADUATE PROGRAMS", href: "#undergraduate" },
       { label: "POSTGRADUATE PROGRAMS", href: "#postgraduate" },
       { label: "PHD PROGRAMS", href: "#phd" },
-      { label: "SYLLABUS", href: "#syllabus" },
+      { label: "SYLLABUS", href: "/academics/syllabus" },
+      { label: "QUESTION PAPERS", href: "/academics/question-papers" },
       { label: "ACADEMIC CALENDAR", href: "#academic-calendar" },
     ],
   },
   {
-    label: "ADMISSIONS",
-    href: "#admissions",
+    label: "CENTRES",
+    href: "#centres",
     subMenu: [
-      { label: "ADMISSION PROCEDURE", href: "#admission-procedure" },
-      { label: "ELIGIBILITY", href: "#eligibility" },
-      { label: "INTAKE & FEES", href: "#fees" },
-      { label: "SCHOLARSHIPS", href: "#scholarships" },
+      {
+        label: "RURAL EDUCATION DEVELOPMENT",
+        href: "https://www.charusat.ac.in/CREDP",
+        target: "_blank",
+      },
+      {
+        label: "WOMEN DEVELOPMENT CELL",
+        href: "https://www.charusat.ac.in/wdc",
+        target: "_blank",
+      },
+      {
+        label: "STARTUP AND INNOVATION CENTRE",
+        href: "https://www.charusat.ac.in/csic",
+        target: "_blank",
+      },
+      {
+        label: "EQUAL OPPORTUNITY CELL",
+        href: "https://www.charusat.ac.in/eoc",
+        target: "_blank",
+      },
+      {
+        label: "INDUSTRY INTERACTION CELL",
+        href: "https://www.charusat.ac.in/university-industry-interaction-cell",
+        target: "_blank",
+      },
+      {
+        label: "INTERNATIONAL STUDENT CELL",
+        href: "https://isc.charusat.ac.in/",
+        target: "_blank",
+      },
+      {
+        label: "ENERGY CONSERVATION CELL",
+        href: "/ecc",
+        target: "_blank",
+      },
+    ],
+  },
+  {
+    label: "COMMITTEES",
+    href: "#committees",
+    subMenu: [
+      {
+        label: "GRIEVANCE REDRESSAL",
+        href: "https://www.charusat.ac.in/cspit/Grievance-Redressal-CSPIT.html",
+        target: "_blank",
+      },
+      {
+        label: "ANTI-RAGGING SQUAD",
+        href: "https://www.charusat.ac.in/cspit/Anti-Ragging-Squad.html",
+        target: "_blank",
+      },
+      {
+        label: "INTERNAL COMPLAINT COMMITTEE",
+        href: "https://www.charusat.ac.in/ICC",
+        target: "_blank",
+      },
+      {
+        label: "ANTI-DRUG",
+        href: "/files/Anti.drug.circular.pdf",
+        target: "_blank",
+      },
     ],
   },
   {
@@ -54,8 +112,63 @@ const MAIN_MENU_LINKS = [
       { label: "CONSULTANCY", href: "#consultancy" },
     ],
   },
-  { label: "PLACEMENTS", href: "#placements" },
-  { label: "CONTACT", href: "#contact" },
+
+  {
+    label: "STUDENT CORNER",
+    href: "#student-corner",
+    subMenu: [
+      {
+        label: "CODE OF CONDUCT",
+        href: "https://www.charusat.ac.in/documents/pdfs/data_1/Code_Of_Conduct/Student%20code%20of%20Conduct.pdf",
+        target: "_blank",
+      },
+      {
+        label: "STUDENT HANDBOOK",
+        href: "/drive?folderId=1LgF2k8N_GeRCs-O50PvXUiywW-Bk8Lyw&heading=STUDENT%20HANDBOOK",
+        target: "_blank",
+      },
+      {
+        label: "SYLLABUS",
+        href: "/drive?folderId=1CrY0oeDZrnVZRuBwtTIp3MVIs9EoXCl2&heading=SYLLABUS",
+        target: "_blank",
+      },
+      {
+        label: "REQUEST TRANSCRIPT",
+        href: "https://charusat.edu.in:912/OthPaymentApp/",
+        target: "_blank",
+      },
+      {
+        label: "PAY FEES",
+        href: "https://charusat.edu.in:912/FeesPaymentApp/",
+        target: "_blank",
+      },
+      {
+        label: "VIEW RESULT",
+        href: "https://charusat.edu.in:912/Uniexamresult/",
+        target: "_blank",
+      },
+      {
+        label: "I-CREATE",
+        href: "https://icreate.charusat.ac.in/",
+        target: "_blank",
+      },
+      {
+        label: "QUESTION PAPERS",
+        href: "/drive?folderId=1U1hIPybwqdsF9Nn_K6QKom0Kg5yAWCaW&heading=QUESTION%20PAPERS",
+        target: "_blank",
+      },
+      {
+        label: "ACADEMIC CALENDAR",
+        href: "/drive?folderId=1EWfAd0mJ3MIVNA7Ct3XnHfS6aKpG2NeJ&heading=ACADEMIC%20CALENDER",
+        target: "_blank",
+      },
+      {
+        label: "STUDENT SUPPORT POLICY",
+        href: "/files/student_support_policy_UGSF_PGSF.pdf",
+        target: "_blank",
+      },
+    ],
+  },
 ];
 
 // Top bar links
@@ -72,12 +185,11 @@ const TOP_BAR_LINKS = [
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
-  const [isScrolled, setIsScrolled] = useState(false);
 
   // Add scroll detection
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      // Scroll logic can be added here if needed in the future
     };
 
     window.addEventListener("scroll", handleScroll);

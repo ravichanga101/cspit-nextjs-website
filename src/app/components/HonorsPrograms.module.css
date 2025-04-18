@@ -1,0 +1,55 @@
+.tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.tg td {
+  border-color: #000;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+}
+
+.tg th {
+  border-color: #000;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+}
+
+.tg .tg-096r {
+  color: #000;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tg .tg-kwiq {
+  border-color: inherit;
+  color: #000;
+  text-align: left;
+  vertical-align: top;
+}
+
+@media screen and (max-width: 767px) {
+  .tg {
+    width: auto !important;
+  }
+
+  .tg col {
+    width: auto !important;
+  }
+
+  .tg-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
