@@ -143,12 +143,12 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   target={item.target}
-                  className="px-4 py-6 text-gray-700 hover:text-[#0054a6] font-medium text-sm transition-colors inline-flex items-center"
+                  className="px-4 py-6 text-gray-700 hover:text-[#0054a6] font-medium text-sm transition-all duration-300 inline-flex items-center relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-[#0054a6] after:left-0 after:bottom-4 after:transform after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-300"
                 >
                   {item.label}
                   {item.subMenu && (
                     <svg
-                      className="w-4 h-4 ml-1 transform group-hover:rotate-180 transition-transform"
+                      className="w-4 h-4 ml-1 transform group-hover:rotate-180 transition-transform duration-300 ease-out"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -165,19 +165,21 @@ export default function Navbar() {
 
                 {item.subMenu && (
                   <div
-                    className="absolute left-0 min-w-[250px] bg-white shadow-lg invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 z-50 border border-gray-100"
+                    className="absolute left-0 min-w-[250px] bg-white shadow-lg invisible opacity-0 group-hover:visible group-hover:opacity-100 transform group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out z-50 border border-gray-100"
                     style={{
                       top: "100%",
                     }}
                   >
                     <div className="py-1">
-                      {item.subMenu.map((subItem) => (
+                      {item.subMenu.map((subItem, index) => (
                         <Link
                           key={subItem.label}
                           href={subItem.href}
-                          className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-[#0054a6] hover:text-white transition-colors"
+                          className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-[#0054a6] hover:text-white transition-all duration-200 relative group/item"
                         >
-                          {subItem.label}
+                          <span className="relative z-10 transform group-hover/item:translate-x-2 transition-transform duration-200 inline-block">
+                            {subItem.label}
+                          </span>
                         </Link>
                       ))}
                     </div>
