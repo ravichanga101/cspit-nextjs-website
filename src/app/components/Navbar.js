@@ -49,6 +49,7 @@ export default function Navbar() {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [timeoutId, setTimeoutId] = useState(null);
 
   // Add scroll detection
   useEffect(() => {
@@ -67,12 +68,46 @@ export default function Navbar() {
   }, []);
 
   const handleMenuItemHover = (label) => {
+    // Clear any existing timeout to prevent unnecessary state changes
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      setTimeoutId(null);
+    }
     setHoveredItem(label);
   };
 
   const handleMenuItemLeave = () => {
-    setHoveredItem(null);
+    // Add a small delay before closing the submenu to allow cursor movement to submenu
+    const id = setTimeout(() => {
+      setHoveredItem(null);
+    }, 100); // 100ms delay
+    setTimeoutId(id);
   };
+
+  const handleSubmenuHover = () => {
+    // Clear timeout when entering the submenu to keep it open
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      setTimeoutId(null);
+    }
+  };
+
+  const handleSubmenuLeave = () => {
+    // When leaving submenu, close it after a small delay
+    const id = setTimeout(() => {
+      setHoveredItem(null);
+    }, 100);
+    setTimeoutId(id);
+  };
+
+  // Clean up any lingering timeouts when component unmounts
+  useEffect(() => {
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [timeoutId]);
 
   const toggleSubmenu = (menu) => {
     setActiveSubmenu((prev) => (prev === menu ? null : menu));
@@ -145,21 +180,37 @@ export default function Navbar() {
 
                 {/* Dropdown for main menu items - Exactly matching the secondary nav design */}
                 {item.subMenu && hoveredItem === item.label && (
-                  <div className="absolute left-0 w-full bg-[#003b75] text-white z-40">
-                    <div className="container mx-auto">
-                      <div className="flex justify-between">
-                        {item.subMenu.map((subItem, index) => (
-                          <Link
-                            key={subItem.label}
-                            href={subItem.href}
-                            className="px-4 py-3 text-xs hover:bg-[#00305e] transition-colors whitespace-nowrap font-medium border-r border-[#004a8e]"
-                          >
-                            {subItem.label}
-                          </Link>
-                        ))}
+                  <>
+                    {/* This is a connector div that creates a bridge between menu item and submenu */}
+                    <div className="absolute h-2 w-full bg-[#0054a6] bottom-0 left-0" />
+
+                    {/* Full-width submenu with blue background */}
+                    <div
+                      className="absolute left-0 w-screen bg-[#003b75] text-white z-[100]"
+                      style={{
+                        top: "100%",
+                        left: "50%",
+                        right: "auto",
+                        transform: "translateX(-50%)",
+                      }}
+                      onMouseEnter={handleSubmenuHover}
+                      onMouseLeave={handleSubmenuLeave}
+                    >
+                      <div className="container mx-auto">
+                        <div className="flex flex-wrap w-full bg-[#003b75]">
+                          {item.subMenu.map((subItem) => (
+                            <Link
+                              key={subItem.label}
+                              href={subItem.href}
+                              className="px-8 py-5 text-sm hover:bg-[#00305e] transition-colors font-medium border-r border-[#004a8e] flex-1 text-left bg-[#003b75]"
+                            >
+                              {subItem.label}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </>
                 )}
               </div>
             ))}
@@ -288,23 +339,6 @@ export default function Navbar() {
           </div>
         )}
       </nav>
-
-      {/* Secondary navigation (centres) - Always visible, not affected by hover */}
-      <div className="hidden md:block bg-[#003b75] text-white">
-        <div className="container mx-auto">
-          <div className="flex justify-between">
-            {SECONDARY_MENU_LINKS.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="px-4 py-3 text-xs hover:bg-[#00305e] transition-colors whitespace-nowrap font-medium border-r border-[#004a8e]"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
     </header>
   );
 }
