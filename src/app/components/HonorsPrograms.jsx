@@ -123,7 +123,9 @@ export default function HonorsPrograms() {
               onClick={() => toggleAccordion(program.id)}
             >
               <span className="font-semibold">{program.title}</span>
-              <span>{activeAccordion === program.id ? "-" : "+"}</span>
+              <span className="inline-block">
+                {activeAccordion === program.id ? "-" : "+"}
+              </span>
             </div>
             {activeAccordion === program.id && (
               <div className="accordion-content p-4 border border-gray-200 rounded-b">

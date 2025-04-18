@@ -357,9 +357,9 @@
   transition: transform 0.3s ease;
 }
 
-.accordion.active .accordion-header span {
+/* .accordion.active .accordion-header span {
   transform: rotate(45deg);
-}
+} */
 
 @media screen and (max-width: 767px) {
   .tg-wrap {
