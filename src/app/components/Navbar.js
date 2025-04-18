@@ -4,148 +4,43 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// Unified menu with nested children for dropdowns
-const MENU_LINKS = [
-  { label: "Home", href: "/" },
+// Main menu items with submenu for ACADEMICS
+const MAIN_MENU_LINKS = [
+  { label: "ABOUT US", href: "#about-us" },
   {
-    label: "Academics",
-    key: "academics",
-    children: [
-      {
-        title: "Programs",
-        links: [
-          { label: "Undergraduate Programs", href: "#under-graduate-programs" },
-          { label: "Postgraduate Programs", href: "#post-graduate-programs" },
-          {
-            label: "Ph.D.",
-            href: "https://www.charusat.ac.in/assets/files/PHD/PhD_Regulations.pdf",
-            target: "_blank",
-          },
-        ],
-      },
-      {
-        title: "Centers",
-        links: [
-          {
-            label: "Rural Education Development",
-            href: "https://www.charusat.ac.in/CREDP",
-            target: "_blank",
-          },
-          {
-            label: "Women Development Cell",
-            href: "https://www.charusat.ac.in/wdc",
-            target: "_blank",
-          },
-          {
-            label: "Startup and Innovation Centre",
-            href: "https://www.charusat.ac.in/csic",
-            target: "_blank",
-          },
-          {
-            label: "Equal Opportunity Cell",
-            href: "https://www.charusat.ac.in/eoc",
-            target: "_blank",
-          },
-        ],
-      },
-      {
-        title: "Resources",
-        links: [
-          {
-            label: "Grievance Redressal",
-            href: "https://www.charusat.ac.in/cspit/Grievance-Redressal-CSPIT.html",
-            target: "_blank",
-          },
-          {
-            label: "Internal Complaint Committee",
-            href: "https://www.charusat.ac.in/ICC",
-            target: "_blank",
-          },
-          {
-            label: "Anti-Drug Policy",
-            href: "./Resources/Anti.drug.circular.pdf",
-            target: "_blank",
-          },
-        ],
-      },
+    label: "ACADEMICS",
+    href: "#academics",
+    subMenu: [
+      { label: "UNDERGRADUATE PROGRAMS (B. TECH)", href: "#undergraduate" },
+      { label: "POSTGRADUATE PROGRAMS (M. TECH)", href: "#postgraduate" },
+      { label: "PH.D.", href: "#phd" },
     ],
   },
-  {
-    label: "Student Corner",
-    key: "student",
-    children: [
-      {
-        title: "Student Resources",
-        links: [
-          {
-            label: "Code Of Conduct",
-            href: "https://www.charusat.ac.in/documents/pdfs/data_1/Code_Of_Conduct/Student%20code%20of%20Conduct.pdf",
-            target: "_blank",
-          },
-          {
-            label: "Student Handbook",
-            href: "drive.html?folderId=1LgF2k8N_GeRCs-O50PvXUiywW-Bk8Lyw&heading=STUDENT%20HANDBOOK",
-            target: "_blank",
-          },
-          {
-            label: "Syllabus",
-            href: "drive.html?folderId=1CrY0oeDZrnVZRuBwtTIp3MVIs9EoXCl2&heading=SYLLABUS",
-            target: "_blank",
-          },
-        ],
-      },
-      {
-        title: "Student Services",
-        links: [
-          {
-            label: "Request Transcript",
-            href: "https://charusat.edu.in:912/OthPaymentApp/",
-            target: "_blank",
-          },
-          {
-            label: "Pay Fees",
-            href: "https://charusat.edu.in:912/FeesPaymentApp/",
-            target: "_blank",
-          },
-          {
-            label: "View Result",
-            href: "https://charusat.edu.in:912/Uniexamresult/",
-            target: "_blank",
-          },
-        ],
-      },
-      {
-        title: "Quick Links",
-        links: [
-          {
-            label: "i-create",
-            href: "https://icreate.charusat.ac.in/",
-            target: "_blank",
-          },
-          {
-            label: "Question Papers",
-            href: "drive.html?folderId=1U1hIPybwqdsF9Nn_K6QKom0Kg5yAWCaW&heading=QUESTION%20PAPERS",
-            target: "_blank",
-          },
-          {
-            label: "Academic Calendar",
-            href: "drive.html?folderId=1EWfAd0mJ3MIVNA7Ct3XnHfS6aKpG2NeJ&heading=ACADEMIC%20CALENDER",
-            target: "_blank",
-          },
-        ],
-      },
-    ],
-  },
-  { label: "Research", href: "/research" },
-  { label: "Faculty & Staff", href: "/faculty" },
+  { label: "CENTRES", href: "#centres" },
+  { label: "COMMITTEES", href: "#committees" },
+  { label: "RESEARCH", href: "/research" },
+  { label: "STUDENT CORNER", href: "#student-corner" },
+];
+
+// Secondary menu items (centers/cells)
+const SECONDARY_MENU_LINKS = [
+  { label: "RURAL EDUCATION DEVELOPMENT", href: "#rural-education" },
+  { label: "WOMEN DEVELOPMENT CELL", href: "#women-development" },
+  { label: "STARTUP AND INNOVATION CENTRE", href: "#startup-innovation" },
+  { label: "EQUAL OPPORTUNITY CELL", href: "#equal-opportunity" },
+  { label: "INDUSTRY INTERACTION CELL", href: "#industry-interaction" },
+  { label: "INTERNATIONAL STUDENT CELL", href: "#international-student" },
+  { label: "ENERGY CONSERVATION CELL", href: "#energy-conservation" },
+];
+
+// Top bar links
+const TOP_BAR_LINKS = [
   { label: "Placement", href: "#placement" },
-
-  {
-    label: "Alumni",
-    href: "https://alumni.charusat.ac.in/",
-    target: "_blank",
-  },
-
+  { label: "Gallery", href: "#gallery" },
+  { label: "Newsletter", href: "#newsletter" },
+  { label: "Scholarships", href: "#scholarships" },
+  { label: "Faculty & Staff", href: "/faculty" },
+  { label: "Alumni", href: "https://alumni.charusat.ac.in/", target: "_blank" },
   { label: "Contact Us", href: "#contact-us" },
 ];
 
@@ -153,22 +48,31 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState(null);
 
   // Add scroll detection
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    
+
+    window.addEventListener("scroll", handleScroll);
+
     // Initialize on mount
     handleScroll();
-    
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleMenuItemHover = (label) => {
+    setHoveredItem(label);
+  };
+
+  const handleMenuItemLeave = () => {
+    setHoveredItem(null);
+  };
 
   const toggleSubmenu = (menu) => {
     setActiveSubmenu((prev) => (prev === menu ? null : menu));
@@ -185,13 +89,24 @@ export default function Navbar() {
 
   return (
     <header className="relative w-full z-50">
-      <nav
-        className={`w-full transition-all duration-300 ${
-          isScrolled 
-            ? "py-2 shadow-md" 
-            : "py-4 shadow-md"
-        } bg-white`}
-      >
+      {/* Top navigation bar - Exact blue color from image */}
+      <div className="bg-[#0054a6] text-white hidden md:block">
+        <div className="container mx-auto px-4 flex justify-end">
+          {TOP_BAR_LINKS.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              target={item.target}
+              className="px-3 py-2 text-sm hover:bg-[#00438a] transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Main navigation - White background with gray border */}
+      <nav className="w-full transition-all duration-300 bg-white py-0 border-b border-gray-200 relative">
         <div className="container mx-auto px-4 flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
@@ -209,62 +124,45 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
-            {MENU_LINKS.map((item) =>
-              item.key ? (
-                <div key={item.key} className="relative group">
-                  <button className="text-gray-700 hover:text-[#0056b3] font-medium py-2 text-base transition-all duration-200 hover:scale-105 flex items-center gap-1">
-                    {item.label}
-                    <svg
-                      className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </button>
-                  <div className="absolute left-1/2 -translate-x-1/2 hidden group-hover:flex w-screen max-w-4xl bg-white shadow-2xl rounded-xl p-6 gap-8 z-50 top-full opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out border border-gray-100 translate-y-2 group-hover:translate-y-0">
-                    <div className="grid grid-cols-3 gap-8 w-full">
-                      {item.children.map((cat) => (
-                        <div key={cat.title} className="space-y-4">
-                          <h3 className="font-semibold text-[#0056b3] text-base md:text-lg">
-                            {cat.title}
-                          </h3>
-                          <div className="space-y-3">
-                            {cat.links.map((ln) => (
-                              <Link
-                                key={ln.label}
-                                href={ln.href}
-                                target={ln.target}
-                                className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base"
-                              >
-                                {ln.label}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ) : (
+          {/* Desktop Menu - Updated to not have any active item by default */}
+          <div className="hidden md:flex items-center">
+            {MAIN_MENU_LINKS.map((item) => (
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => handleMenuItemHover(item.label)}
+                onMouseLeave={handleMenuItemLeave}
+              >
                 <Link
-                  key={item.label}
                   href={item.href}
                   target={item.target}
-                  className="text-gray-700 hover:text-[#0056b3] font-medium py-2 text-base transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#0056b3] after:transition-all after:duration-300 hover:after:w-full"
+                  className={`px-8 py-6 text-black hover:bg-[#0054a6] hover:text-white font-medium text-base transition-colors border-x border-gray-200 inline-block ${
+                    hoveredItem === item.label ? "bg-[#0054a6] text-white" : ""
+                  }`}
                 >
                   {item.label}
                 </Link>
-              )
-            )}
+
+                {/* Dropdown for main menu items - Exactly matching the secondary nav design */}
+                {item.subMenu && hoveredItem === item.label && (
+                  <div className="absolute left-0 w-full bg-[#003b75] text-white z-40">
+                    <div className="container mx-auto">
+                      <div className="flex justify-between">
+                        {item.subMenu.map((subItem, index) => (
+                          <Link
+                            key={subItem.label}
+                            href={subItem.href}
+                            className="px-4 py-3 text-xs hover:bg-[#00305e] transition-colors whitespace-nowrap font-medium border-r border-[#004a8e]"
+                          >
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
@@ -299,73 +197,114 @@ export default function Navbar() {
         {isMobileMenuOpen && (
           <div className="w-full bg-white shadow-2xl z-50 md:hidden">
             <div className="p-4 space-y-4 max-h-[80vh] overflow-y-auto">
-              {MENU_LINKS.map((item) =>
-                item.key ? (
-                  <div key={item.key} className="space-y-2">
-                    <button
-                      className="flex items-center justify-between w-full text-gray-700 hover:text-[#0056b3] transition-all duration-200 text-base font-medium"
-                      onClick={toggleSubmenu.bind(null, item.key)}
-                    >
-                      <span>{item.label}</span>
-                      <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          activeSubmenu === item.key ? "rotate-180" : ""
-                        }`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </button>
-                    <div
-                      className={`pl-4 space-y-2 text-base ${
-                        activeSubmenu === item.key ? "block" : "hidden"
-                      }`}
-                    >
-                      {item.children.map((cat) => (
-                        <div key={cat.title} className="space-y-4">
-                          <h3 className="font-semibold text-[#0056b3] text-base md:text-lg">
-                            {cat.title}
-                          </h3>
-                          <div className="space-y-3">
-                            {cat.links.map((ln) => (
-                              <Link
-                                key={ln.label}
-                                href={ln.href}
-                                target={ln.target}
-                                className="block text-gray-600 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base"
-                                onClick={closeMobileMenu}
-                              >
-                                {ln.label}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
+              {/* Top bar links for mobile */}
+              <div className="border-b border-gray-200 pb-4 mb-4">
+                {TOP_BAR_LINKS.map((item) => (
                   <Link
                     key={item.label}
                     href={item.href}
                     target={item.target}
-                    className="block text-gray-700 hover:text-[#0056b3] hover:translate-x-1 transition-all duration-200 text-base font-medium"
+                    className="block text-gray-700 hover:text-[#0054a6] hover:translate-x-1 transition-all duration-200 text-base font-medium py-2"
                     onClick={closeMobileMenu}
                   >
                     {item.label}
                   </Link>
-                )
-              )}
+                ))}
+              </div>
+
+              {/* Main menu links for mobile */}
+              {MAIN_MENU_LINKS.map((item) => (
+                <div key={item.label}>
+                  {item.subMenu ? (
+                    <>
+                      <button
+                        onClick={() => toggleSubmenu(item.label)}
+                        className="flex justify-between items-center w-full text-left text-gray-700 hover:text-[#0054a6] hover:translate-x-1 transition-all duration-200 text-base font-medium"
+                      >
+                        {item.label}
+                        <svg
+                          className={`w-4 h-4 transition-transform ${
+                            activeSubmenu === item.label
+                              ? "transform rotate-180"
+                              : ""
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M19 9l-7 7-7-7"
+                          ></path>
+                        </svg>
+                      </button>
+                      {activeSubmenu === item.label && (
+                        <div className="pl-4 mt-2 border-l border-gray-200 space-y-2">
+                          {item.subMenu.map((subItem) => (
+                            <Link
+                              key={subItem.label}
+                              href={subItem.href}
+                              className="block text-gray-700 hover:text-[#0054a6] hover:translate-x-1 transition-all duration-200 text-sm py-2"
+                              onClick={closeMobileMenu}
+                            >
+                              {subItem.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      target={item.target}
+                      className="block text-gray-700 hover:text-[#0054a6] hover:translate-x-1 transition-all duration-200 text-base font-medium py-2"
+                      onClick={closeMobileMenu}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </div>
+              ))}
+
+              {/* Secondary menu links (centers) for mobile */}
+              <div className="border-t border-gray-200 pt-4 mt-4">
+                <h3 className="font-semibold text-[#0054a6] mb-2">CENTRES</h3>
+                {SECONDARY_MENU_LINKS.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    target={item.target}
+                    className="block text-gray-700 hover:text-[#0054a6] hover:translate-x-1 transition-all duration-200 text-base font-medium py-2"
+                    onClick={closeMobileMenu}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         )}
       </nav>
+
+      {/* Secondary navigation (centres) - Always visible, not affected by hover */}
+      <div className="hidden md:block bg-[#003b75] text-white">
+        <div className="container mx-auto">
+          <div className="flex justify-between">
+            {SECONDARY_MENU_LINKS.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="px-4 py-3 text-xs hover:bg-[#00305e] transition-colors whitespace-nowrap font-medium border-r border-[#004a8e]"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
