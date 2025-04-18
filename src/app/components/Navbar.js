@@ -16,21 +16,22 @@ const MAIN_MENU_LINKS = [
       { label: "PH.D.", href: "#phd" },
     ],
   },
-  { label: "CENTRES", href: "#centres" },
+  {
+    label: "CENTRES",
+    href: "#centres",
+    subMenu: [
+      { label: "RURAL EDUCATION DEVELOPMENT", href: "#rural-education" },
+      { label: "WOMEN DEVELOPMENT CELL", href: "#women-development" },
+      { label: "STARTUP AND INNOVATION CENTRE", href: "#startup-innovation" },
+      { label: "EQUAL OPPORTUNITY CELL", href: "#equal-opportunity" },
+      { label: "INDUSTRY INTERACTION CELL", href: "#industry-interaction" },
+      { label: "INTERNATIONAL STUDENT CELL", href: "#international-student" },
+      { label: "ENERGY CONSERVATION CELL", href: "#energy-conservation" },
+    ],
+  },
   { label: "COMMITTEES", href: "#committees" },
   { label: "RESEARCH", href: "/research" },
   { label: "STUDENT CORNER", href: "#student-corner" },
-];
-
-// Secondary menu items (centers/cells)
-const SECONDARY_MENU_LINKS = [
-  { label: "RURAL EDUCATION DEVELOPMENT", href: "#rural-education" },
-  { label: "WOMEN DEVELOPMENT CELL", href: "#women-development" },
-  { label: "STARTUP AND INNOVATION CENTRE", href: "#startup-innovation" },
-  { label: "EQUAL OPPORTUNITY CELL", href: "#equal-opportunity" },
-  { label: "INDUSTRY INTERACTION CELL", href: "#industry-interaction" },
-  { label: "INTERNATIONAL STUDENT CELL", href: "#international-student" },
-  { label: "ENERGY CONSERVATION CELL", href: "#energy-conservation" },
 ];
 
 // Top bar links
@@ -127,23 +128,18 @@ export default function Navbar() {
                     <div className="absolute h-2 w-full bg-[#0054a6] bottom-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity" />
 
                     <div
-                      className="absolute left-0 min-w-[200px] bg-[#003b75] text-white invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 z-50"
+                      className="absolute left-1/2 -translate-x-1/2 bg-[#003b75] text-white invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 z-50 w-screen"
                       style={{
                         top: "calc(100% - 2px)",
-                        width: "max-content",
                       }}
                     >
-                      <div className="container">
-                        <div className="flex">
+                      <div className="container mx-auto px-4">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
                           {item.subMenu.map((subItem, index) => (
                             <Link
                               key={subItem.label}
                               href={subItem.href}
-                              className={`px-6 py-4 text-sm hover:bg-[#00305e] transition-colors font-medium text-left whitespace-nowrap ${
-                                index !== item.subMenu.length - 1
-                                  ? "border-r border-[#004a8e]"
-                                  : ""
-                              }`}
+                              className="px-6 py-4 text-sm hover:bg-[#00305e] transition-colors font-medium text-left border-b last:border-b-0 md:even:border-l lg:border-l"
                             >
                               {subItem.label}
                             </Link>
