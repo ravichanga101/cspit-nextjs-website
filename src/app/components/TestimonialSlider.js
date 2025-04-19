@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 
 export default function TestimonialSlider() {
@@ -33,13 +33,13 @@ export default function TestimonialSlider() {
     },
   ];
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     if (!isAnimating) {
       setIsAnimating(true);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
       setTimeout(() => setIsAnimating(false), 500);
     }
-  };
+  }, [isAnimating, testimonials.length]);
 
   const prevSlide = () => {
     if (!isAnimating) {
@@ -65,7 +65,7 @@ export default function TestimonialSlider() {
     }, 8000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [nextSlide]);
 
   return (
     <section className="py-16 relative">
