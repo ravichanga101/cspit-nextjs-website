@@ -113,7 +113,7 @@ const WelcomeSection = () => {
           {/* Welcome Text */}
           <div className="w-full lg:w-1/2">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Welcome to CSPIT
+              CSPIT
             </h1>
             <h2 className="text-xl md:text-2xl font-medium text-gray-600 mb-6">
               Chandubhai S. Patel Institute of Technology
@@ -149,7 +149,7 @@ const WelcomeSection = () => {
           {/* Welcome Image */}
           <div className="w-full lg:w-1/2 relative h-[400px] rounded-lg overflow-hidden">
             <Image
-              src="/images/ahmedabad-research-bg.jpg"
+              src="/images/homepage.jpg"
               alt="CSPIT Campus"
               fill
               className="object-cover"

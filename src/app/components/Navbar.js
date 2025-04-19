@@ -240,8 +240,8 @@ export default function Navbar() {
               <Image
                 src="/images1/CSPIT_Logo.png"
                 alt="CSPIT Logo"
-                width={100}
-                height={100}
+                width={80}
+                height={80}
                 className="transition-all duration-300"
                 priority
               />

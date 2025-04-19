@@ -68,15 +68,26 @@ export default function TestimonialSlider() {
   }, []);
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+    <section className="py-16 relative">
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image
+          src="/images1/about-us-bg.webp"
+          alt="Background"
+          fill
+          sizes="100vw"
+          quality={85}
+          className="object-cover "
+          priority
+        />
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
+        {/* <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-2">Success Stories</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#ffcc00] to-[#0056b3] mx-auto"></div>
-        </div>
+        </div> */}
 
         <div className="max-w-6xl mx-auto">
-          <div className="relative bg-white rounded-xl shadow-lg overflow-hidden">
+          <div className="relative bg-white rounded-xl shadow-lg overflow-hidden opacity-92">
             <div
               className={`transition-opacity duration-500 ${
                 isAnimating ? "opacity-0" : "opacity-100"
