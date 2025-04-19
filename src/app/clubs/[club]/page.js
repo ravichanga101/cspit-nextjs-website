@@ -256,7 +256,8 @@ export default function ClubDetailsPage() {
             Club Not Found
           </h1>
           <p className="text-gray-600 mb-8">
-            The club you're looking for doesn't exist or has been moved.
+            The club you&apos;re looking for doesn&apos;t exist or has been
+            moved.
           </p>
           <Link
             href="/"
