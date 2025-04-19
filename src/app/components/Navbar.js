@@ -91,15 +91,18 @@ const MAIN_MENU_LINKS = [
     label: "DEPARTMENTS",
     href: "#departments",
     subMenu: [
-      { label: "COMPUTER SCIENCE & ENGINEERING", href: "/departments/cse" },
-      { label: "INFORMATION TECHNOLOGY", href: "/departments/it" },
-      { label: "CIVIL ENGINEERING", href: "/departments/civil" },
-      { label: "MECHANICAL ENGINEERING", href: "/departments/mechanical" },
-      { label: "ELECTRICAL ENGINEERING", href: "/departments/electrical" },
       {
         label: "ELECTRONICS & COMMUNICATION",
         href: "/departments/electronics",
       },
+      { label: "COMPUTER SCIENCE & ENGINEERING", href: "/departments/cse" },
+      { label: "COMPUTER ENGINEERING", href: "/departments/ce" },
+
+      { label: "INFORMATION TECHNOLOGY", href: "/departments/it" },
+
+      { label: "MECHANICAL ENGINEERING", href: "/departments/mechanical" },
+      { label: "ELECTRICAL ENGINEERING", href: "/departments/electrical" },
+      { label: "CIVIL ENGINEERING", href: "/departments/civil" },
     ],
   },
   {
